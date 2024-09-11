@@ -1,0 +1,172 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Debug App",
+            "program": "${workspaceFolder:FOSShowcase}/.build/debug/App",
+            "preLaunchTask": "swift: Build Debug App"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Release App",
+            "program": "${workspaceFolder:FOSShowcase}/.build/release/App",
+            "preLaunchTask": "swift: Build Release App"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Debug WebServer",
+            "program": "${workspaceFolder:FOSShowcase}/.build/debug/WebServer",
+            "preLaunchTask": "swift: Build Debug WebServer"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Release WebServer",
+            "program": "${workspaceFolder:FOSShowcase}/.build/release/WebServer",
+            "preLaunchTask": "swift: Build Release WebServer"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Debug FOSShowcaseWebServer",
+            "program": "${workspaceFolder:FOSShowcase}/.build/debug/FOSShowcaseWebServer",
+            "preLaunchTask": "swift: Build Debug FOSShowcaseWebServer"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Release FOSShowcaseWebServer",
+            "program": "${workspaceFolder:FOSShowcase}/.build/release/FOSShowcaseWebServer",
+            "preLaunchTask": "swift: Build Release FOSShowcaseWebServer"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Debug IgniteWebApp",
+            "program": "${workspaceFolder:FOSShowcase}/.build/debug/IgniteWebApp",
+            "preLaunchTask": "swift: Build Debug IgniteWebApp"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Release IgniteWebApp",
+            "program": "${workspaceFolder:FOSShowcase}/.build/release/IgniteWebApp",
+            "preLaunchTask": "swift: Build Release IgniteWebApp"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Debug FOSShowcase_WebServer",
+            "program": "${workspaceFolder:FOSShowcase}/.build/debug/FOSShowcase_WebServer",
+            "preLaunchTask": "swift: Build Debug FOSShowcase_WebServer"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Release FOSShowcase_WebServer",
+            "program": "${workspaceFolder:FOSShowcase}/.build/release/FOSShowcase_WebServer",
+            "preLaunchTask": "swift: Build Release FOSShowcase_WebServer"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Debug VaporLeafWebApp",
+            "program": "${workspaceFolder:FOSShowcase}/.build/debug/VaporLeafWebApp",
+            "preLaunchTask": "swift: Build Debug VaporLeafWebApp"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Release VaporLeafWebApp",
+            "program": "${workspaceFolder:FOSShowcase}/.build/release/VaporLeafWebApp",
+            "preLaunchTask": "swift: Build Release VaporLeafWebApp"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Debug VaporWebServer",
+            "program": "${workspaceFolder:FOSShowcase}/.build/debug/VaporWebServer",
+            "preLaunchTask": "swift: Build Debug VaporWebServer"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Release VaporWebServer",
+            "program": "${workspaceFolder:FOSShowcase}/.build/release/VaporWebServer",
+            "preLaunchTask": "swift: Build Release VaporWebServer"
+        }
+    ]
+}
