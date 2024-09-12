@@ -1,5 +1,5 @@
 {
-  "originHash" : "e205dd5e1fc14bfb1ecbc3ba62c08c36a89da37f7c9da9ea1f7a3a7f886f4bdf",
+  "originHash" : "d6b811d02c67a57781af790fe2b6c0c1192a3cc12d8e9bff3f8797c11f7271a1",
   "pins" : [
     {
       "identity" : "async-http-client",
@@ -34,7 +34,7 @@
       "location" : "https://github.com/foscomputerservices/FOSUtilities.git",
       "state" : {
         "branch" : "main",
-        "revision" : "cd44b4116aa395c424ff30f0b836f9f10294c120"
+        "revision" : "3bb168ccc027276cf6a3beb252c3acfbfef64302"
       }
     },
     {
