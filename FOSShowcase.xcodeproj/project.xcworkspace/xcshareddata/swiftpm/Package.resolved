@@ -1,5 +1,5 @@
 {
-  "originHash" : "6805e2eeec9fc494d46d3e15b084cbd8ed99cdaeab362066f07958f4d463ed58",
+  "originHash" : "e205dd5e1fc14bfb1ecbc3ba62c08c36a89da37f7c9da9ea1f7a3a7f886f4bdf",
   "pins" : [
     {
       "identity" : "async-http-client",
@@ -26,6 +26,15 @@
       "state" : {
         "revision" : "78c0dd739df8cb9ee14a8bbbf770facc4fc3402a",
         "version" : "4.15.0"
+      }
+    },
+    {
+      "identity" : "fosutilities",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/foscomputerservices/FOSUtilities.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "cd44b4116aa395c424ff30f0b836f9f10294c120"
       }
     },
     {
@@ -187,7 +196,7 @@
       "location" : "https://github.com/swiftlang/swift-testing.git",
       "state" : {
         "branch" : "main",
-        "revision" : "cca6de2be617aded98ecdecb0b3b3a81eec013f3"
+        "revision" : "dab00aee6c2b93f6e1c729b3d2b83f89cfebf44c"
       }
     },
     {
