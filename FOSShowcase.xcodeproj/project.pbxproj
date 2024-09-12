@@ -1,0 +1,734 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6308ECD22C8BCABF00C3463D /* FOSFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 6308ECD12C8BCABF00C3463D /* FOSFoundation */; };
+		6308ECD42C8BCABF00C3463D /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 6308ECD32C8BCABF00C3463D /* FOSMVVM */; };
+		6308ECD62C8BCABF00C3463D /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 6308ECD52C8BCABF00C3463D /* FOSTesting */; };
+		6308ECD92C8BCB1500C3463D /* Testing in Frameworks */ = {isa = PBXBuildFile; productRef = 6308ECD82C8BCB1500C3463D /* Testing */; };
+		631A43742C9234B8005692FF /* FOSFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 631A43732C9234B8005692FF /* FOSFoundation */; };
+		631A43762C9234B8005692FF /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 631A43752C9234B8005692FF /* FOSMVVM */; };
+		631A43782C9234B8005692FF /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 631A43772C9234B8005692FF /* FOSTesting */; };
+		632162AC2C8F3F6F002B991F /* FOSFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 632162AB2C8F3F6F002B991F /* FOSFoundation */; };
+		632162AE2C8F3F6F002B991F /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 632162AD2C8F3F6F002B991F /* FOSMVVM */; };
+		632162B02C8F3F6F002B991F /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 632162AF2C8F3F6F002B991F /* FOSTesting */; };
+		635E7AEC2C8F6FC10086BAC5 /* LandingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AEA2C8F6FC10086BAC5 /* LandingPageViewModel.swift */; };
+		635E7AED2C8F6FC10086BAC5 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */; };
+		635E7AEE2C8F6FC10086BAC5 /* LandingPageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE92C8F6FC10086BAC5 /* LandingPageRequest.swift */; };
+		639D68AF2C92A513003C0601 /* FOSFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 639D68AE2C92A513003C0601 /* FOSFoundation */; };
+		639D68B12C92A513003C0601 /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 639D68B02C92A513003C0601 /* FOSMVVM */; };
+		639D68B32C92A513003C0601 /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 639D68B22C92A513003C0601 /* FOSTesting */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		630FAAF22C8B76D50046A1FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 630FAAD82C8B76D30046A1FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 630FAADF2C8B76D30046A1FF;
+			remoteInfo = FOSShowcase;
+		};
+		630FAAFC2C8B76D50046A1FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 630FAAD82C8B76D30046A1FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 630FAADF2C8B76D30046A1FF;
+			remoteInfo = FOSShowcase;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		630FAAE02C8B76D30046A1FF /* FOSShowcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FOSShowcase.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		630FAAF12C8B76D50046A1FF /* FOSShowcaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FOSShowcaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		630FAAFB2C8B76D50046A1FF /* FOSShowcaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FOSShowcaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
+		635E7AE92C8F6FC10086BAC5 /* LandingPageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageRequest.swift; sourceTree = "<group>"; };
+		635E7AEA2C8F6FC10086BAC5 /* LandingPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		630FAAE22C8B76D30046A1FF /* FOSShowcase */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			name = FOSShowcase;
+			path = Sources/SwiftUIApp;
+			sourceTree = "<group>";
+		};
+		630FAAF42C8B76D50046A1FF /* FOSShowcaseTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			name = FOSShowcaseTests;
+			path = Tests/FOSShowcaseTests;
+			sourceTree = "<group>";
+		};
+		630FAAFE2C8B76D50046A1FF /* FOSShowcaseUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			name = FOSShowcaseUITests;
+			path = Tests/FOSShowcaseUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		630FAADD2C8B76D30046A1FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6308ECD22C8BCABF00C3463D /* FOSFoundation in Frameworks */,
+				639D68AF2C92A513003C0601 /* FOSFoundation in Frameworks */,
+				632162AE2C8F3F6F002B991F /* FOSMVVM in Frameworks */,
+				632162AC2C8F3F6F002B991F /* FOSFoundation in Frameworks */,
+				631A43762C9234B8005692FF /* FOSMVVM in Frameworks */,
+				639D68B12C92A513003C0601 /* FOSMVVM in Frameworks */,
+				631A43742C9234B8005692FF /* FOSFoundation in Frameworks */,
+				6308ECD42C8BCABF00C3463D /* FOSMVVM in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		630FAAEE2C8B76D50046A1FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				632162B02C8F3F6F002B991F /* FOSTesting in Frameworks */,
+				6308ECD62C8BCABF00C3463D /* FOSTesting in Frameworks */,
+				639D68B32C92A513003C0601 /* FOSTesting in Frameworks */,
+				631A43782C9234B8005692FF /* FOSTesting in Frameworks */,
+				6308ECD92C8BCB1500C3463D /* Testing in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		630FAAF82C8B76D50046A1FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		630FAAD72C8B76D30046A1FF = {
+			isa = PBXGroup;
+			children = (
+				635E7AE82C8F6FC10086BAC5 /* SwiftUIViews */,
+				635E7AEB2C8F6FC10086BAC5 /* ViewModels */,
+				630FAAE22C8B76D30046A1FF /* FOSShowcase */,
+				630FAAF42C8B76D50046A1FF /* FOSShowcaseTests */,
+				630FAAFE2C8B76D50046A1FF /* FOSShowcaseUITests */,
+				630FAAE12C8B76D30046A1FF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		630FAAE12C8B76D30046A1FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				630FAAE02C8B76D30046A1FF /* FOSShowcase.app */,
+				630FAAF12C8B76D50046A1FF /* FOSShowcaseTests.xctest */,
+				630FAAFB2C8B76D50046A1FF /* FOSShowcaseUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		635E7AE82C8F6FC10086BAC5 /* SwiftUIViews */ = {
+			isa = PBXGroup;
+			children = (
+				635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */,
+			);
+			name = SwiftUIViews;
+			path = Sources/SwiftUIViews;
+			sourceTree = "<group>";
+		};
+		635E7AEB2C8F6FC10086BAC5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				635E7AE92C8F6FC10086BAC5 /* LandingPageRequest.swift */,
+				635E7AEA2C8F6FC10086BAC5 /* LandingPageViewModel.swift */,
+			);
+			name = ViewModels;
+			path = Sources/ViewModels;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		630FAADF2C8B76D30046A1FF /* FOSShowcase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 630FAB052C8B76D50046A1FF /* Build configuration list for PBXNativeTarget "FOSShowcase" */;
+			buildPhases = (
+				630FAADC2C8B76D30046A1FF /* Sources */,
+				630FAADD2C8B76D30046A1FF /* Frameworks */,
+				630FAADE2C8B76D30046A1FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				630FAAE22C8B76D30046A1FF /* FOSShowcase */,
+			);
+			name = FOSShowcase;
+			packageProductDependencies = (
+				6308ECD12C8BCABF00C3463D /* FOSFoundation */,
+				6308ECD32C8BCABF00C3463D /* FOSMVVM */,
+				632162AB2C8F3F6F002B991F /* FOSFoundation */,
+				632162AD2C8F3F6F002B991F /* FOSMVVM */,
+				631A43732C9234B8005692FF /* FOSFoundation */,
+				631A43752C9234B8005692FF /* FOSMVVM */,
+				639D68AE2C92A513003C0601 /* FOSFoundation */,
+				639D68B02C92A513003C0601 /* FOSMVVM */,
+			);
+			productName = FOSShowcase;
+			productReference = 630FAAE02C8B76D30046A1FF /* FOSShowcase.app */;
+			productType = "com.apple.product-type.application";
+		};
+		630FAAF02C8B76D50046A1FF /* FOSShowcaseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 630FAB082C8B76D50046A1FF /* Build configuration list for PBXNativeTarget "FOSShowcaseTests" */;
+			buildPhases = (
+				630FAAED2C8B76D50046A1FF /* Sources */,
+				630FAAEE2C8B76D50046A1FF /* Frameworks */,
+				630FAAEF2C8B76D50046A1FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				630FAAF32C8B76D50046A1FF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				630FAAF42C8B76D50046A1FF /* FOSShowcaseTests */,
+			);
+			name = FOSShowcaseTests;
+			packageProductDependencies = (
+				6308ECD52C8BCABF00C3463D /* FOSTesting */,
+				6308ECD82C8BCB1500C3463D /* Testing */,
+				632162AF2C8F3F6F002B991F /* FOSTesting */,
+				631A43772C9234B8005692FF /* FOSTesting */,
+				639D68B22C92A513003C0601 /* FOSTesting */,
+			);
+			productName = FOSShowcaseTests;
+			productReference = 630FAAF12C8B76D50046A1FF /* FOSShowcaseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		630FAAFA2C8B76D50046A1FF /* FOSShowcaseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 630FAB0B2C8B76D50046A1FF /* Build configuration list for PBXNativeTarget "FOSShowcaseUITests" */;
+			buildPhases = (
+				630FAAF72C8B76D50046A1FF /* Sources */,
+				630FAAF82C8B76D50046A1FF /* Frameworks */,
+				630FAAF92C8B76D50046A1FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				630FAAFD2C8B76D50046A1FF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				630FAAFE2C8B76D50046A1FF /* FOSShowcaseUITests */,
+			);
+			name = FOSShowcaseUITests;
+			packageProductDependencies = (
+			);
+			productName = FOSShowcaseUITests;
+			productReference = 630FAAFB2C8B76D50046A1FF /* FOSShowcaseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		630FAAD82C8B76D30046A1FF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					630FAADF2C8B76D30046A1FF = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					630FAAF02C8B76D50046A1FF = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 630FAADF2C8B76D30046A1FF;
+					};
+					630FAAFA2C8B76D50046A1FF = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 630FAADF2C8B76D30046A1FF;
+					};
+				};
+			};
+			buildConfigurationList = 630FAADB2C8B76D30046A1FF /* Build configuration list for PBXProject "FOSShowcase" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 630FAAD72C8B76D30046A1FF;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6308ECD72C8BCB1500C3463D /* XCRemoteSwiftPackageReference "swift-testing" */,
+				639D68AD2C92A513003C0601 /* XCLocalSwiftPackageReference "../FOSUtilities" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 630FAAE12C8B76D30046A1FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				630FAADF2C8B76D30046A1FF /* FOSShowcase */,
+				630FAAF02C8B76D50046A1FF /* FOSShowcaseTests */,
+				630FAAFA2C8B76D50046A1FF /* FOSShowcaseUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		630FAADE2C8B76D30046A1FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		630FAAEF2C8B76D50046A1FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		630FAAF92C8B76D50046A1FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		630FAADC2C8B76D30046A1FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				635E7AEC2C8F6FC10086BAC5 /* LandingPageViewModel.swift in Sources */,
+				635E7AED2C8F6FC10086BAC5 /* LandingPageView.swift in Sources */,
+				635E7AEE2C8F6FC10086BAC5 /* LandingPageRequest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		630FAAED2C8B76D50046A1FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		630FAAF72C8B76D50046A1FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		630FAAF32C8B76D50046A1FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 630FAADF2C8B76D30046A1FF /* FOSShowcase */;
+			targetProxy = 630FAAF22C8B76D50046A1FF /* PBXContainerItemProxy */;
+		};
+		630FAAFD2C8B76D50046A1FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 630FAADF2C8B76D30046A1FF /* FOSShowcase */;
+			targetProxy = 630FAAFC2C8B76D50046A1FF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		630FAB032C8B76D50046A1FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 16.6;
+				WATCHOS_DEPLOYMENT_TARGET = 9.6;
+				XROS_DEPLOYMENT_TARGET = 1.3;
+			};
+			name = Debug;
+		};
+		630FAB042C8B76D50046A1FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				TVOS_DEPLOYMENT_TARGET = 16.6;
+				WATCHOS_DEPLOYMENT_TARGET = 9.6;
+				XROS_DEPLOYMENT_TARGET = 1.3;
+			};
+			name = Release;
+		};
+		630FAB062C8B76D50046A1FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Sources/SwiftUIApp/FOSShowcase.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Sources/SwiftUIApp/Preview Content\"";
+				DEVELOPMENT_TEAM = J9VR68AE7U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "FOS Services";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSShowcase;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3,7";
+				TVOS_DEPLOYMENT_TARGET = 17.6;
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		630FAB072C8B76D50046A1FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Sources/SwiftUIApp/FOSShowcase.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Sources/SwiftUIApp/Preview Content\"";
+				DEVELOPMENT_TEAM = J9VR68AE7U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "FOS Services";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSShowcase;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3,7";
+				TVOS_DEPLOYMENT_TARGET = 17.6;
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		630FAB092C8B76D50046A1FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J9VR68AE7U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSShowcaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FOSShowcase.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FOSShowcase";
+			};
+			name = Debug;
+		};
+		630FAB0A2C8B76D50046A1FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J9VR68AE7U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSShowcaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FOSShowcase.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FOSShowcase";
+			};
+			name = Release;
+		};
+		630FAB0C2C8B76D50046A1FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J9VR68AE7U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSShowcaseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = FOSShowcase;
+			};
+			name = Debug;
+		};
+		630FAB0D2C8B76D50046A1FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J9VR68AE7U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSShowcaseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = FOSShowcase;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		630FAADB2C8B76D30046A1FF /* Build configuration list for PBXProject "FOSShowcase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				630FAB032C8B76D50046A1FF /* Debug */,
+				630FAB042C8B76D50046A1FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		630FAB052C8B76D50046A1FF /* Build configuration list for PBXNativeTarget "FOSShowcase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				630FAB062C8B76D50046A1FF /* Debug */,
+				630FAB072C8B76D50046A1FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		630FAB082C8B76D50046A1FF /* Build configuration list for PBXNativeTarget "FOSShowcaseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				630FAB092C8B76D50046A1FF /* Debug */,
+				630FAB0A2C8B76D50046A1FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		630FAB0B2C8B76D50046A1FF /* Build configuration list for PBXNativeTarget "FOSShowcaseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				630FAB0C2C8B76D50046A1FF /* Debug */,
+				630FAB0D2C8B76D50046A1FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		639D68AD2C92A513003C0601 /* XCLocalSwiftPackageReference "../FOSUtilities" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../FOSUtilities;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6308ECD72C8BCB1500C3463D /* XCRemoteSwiftPackageReference "swift-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftlang/swift-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6308ECD12C8BCABF00C3463D /* FOSFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FOSFoundation;
+		};
+		6308ECD32C8BCABF00C3463D /* FOSMVVM */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FOSMVVM;
+		};
+		6308ECD52C8BCABF00C3463D /* FOSTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FOSTesting;
+		};
+		6308ECD82C8BCB1500C3463D /* Testing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6308ECD72C8BCB1500C3463D /* XCRemoteSwiftPackageReference "swift-testing" */;
+			productName = Testing;
+		};
+		631A43732C9234B8005692FF /* FOSFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FOSFoundation;
+		};
+		631A43752C9234B8005692FF /* FOSMVVM */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FOSMVVM;
+		};
+		631A43772C9234B8005692FF /* FOSTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FOSTesting;
+		};
+		632162AB2C8F3F6F002B991F /* FOSFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FOSFoundation;
+		};
+		632162AD2C8F3F6F002B991F /* FOSMVVM */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FOSMVVM;
+		};
+		632162AF2C8F3F6F002B991F /* FOSTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FOSTesting;
+		};
+		639D68AE2C92A513003C0601 /* FOSFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FOSFoundation;
+		};
+		639D68B02C92A513003C0601 /* FOSMVVM */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FOSMVVM;
+		};
+		639D68B22C92A513003C0601 /* FOSTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FOSTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 630FAAD82C8B76D30046A1FF /* Project object */;
+}
