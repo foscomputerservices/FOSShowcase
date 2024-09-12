@@ -50,7 +50,7 @@ extension URL {
     static var baseURL: URL {
         get async {
             switch await Deployment.current {
-            case .release: URL(string: "https://www.foscomputerservices.com")!
+            case .production: URL(string: "https://api.foscomputerservices.com")!
             case .staging: URL(string: "https://staging.foscomputerservices.com")!
             case .debug: URL(string: "http://localhost:8080")!
             case .custom(let name):
