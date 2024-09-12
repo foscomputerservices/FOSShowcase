@@ -2,9 +2,7 @@
 # Build image
 # ================================
 
-# -- NOTE: Until swift 6.0 is officially released, this configuration
-#    is broken
-FROM swift:5.10-noble AS build
+FROM swiftlang:nightly-6.0-jammy AS build
 
 # Install OS updates
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \

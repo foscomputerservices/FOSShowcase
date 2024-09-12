@@ -28,8 +28,8 @@ let package = Package(
         // .package(url: "https://github.com/apple/swift-nio.git", from: "2.65.0"),
 
         // FOS frameworks
-        // .package(url: "https://github.com/foscomputerservices/FOSUtilities.git", branch: "main"),
-        .package(path: "../FOSUtilities"),
+        .package(url: "https://github.com/foscomputerservices/FOSUtilities.git", branch: "main"),
+        // .package(path: "../FOSUtilities"),
 
         // Third 🥳 frameworks
         .package(url: "https://github.com/vapor/vapor.git", .upToNextMajor(from: "4.102.0")),
