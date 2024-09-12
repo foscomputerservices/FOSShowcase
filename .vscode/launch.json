@@ -32,9 +32,9 @@
             ],
             "args": [],
             "cwd": "${workspaceFolder:FOSShowcase}",
-            "name": "Debug WebServer",
-            "program": "${workspaceFolder:FOSShowcase}/.build/debug/WebServer",
-            "preLaunchTask": "swift: Build Debug WebServer"
+            "name": "Debug VaporWebServer",
+            "program": "${workspaceFolder:FOSShowcase}/.build/debug/VaporWebServer",
+            "preLaunchTask": "swift: Build Debug VaporWebServer"
         },
         {
             "type": "lldb",
@@ -44,9 +44,9 @@
             ],
             "args": [],
             "cwd": "${workspaceFolder:FOSShowcase}",
-            "name": "Release WebServer",
-            "program": "${workspaceFolder:FOSShowcase}/.build/release/WebServer",
-            "preLaunchTask": "swift: Build Release WebServer"
+            "name": "Release VaporWebServer",
+            "program": "${workspaceFolder:FOSShowcase}/.build/release/VaporWebServer",
+            "preLaunchTask": "swift: Build Release VaporWebServer"
         },
         {
             "type": "lldb",
@@ -56,9 +56,9 @@
             ],
             "args": [],
             "cwd": "${workspaceFolder:FOSShowcase}",
-            "name": "Debug FOSShowcaseWebServer",
-            "program": "${workspaceFolder:FOSShowcase}/.build/debug/FOSShowcaseWebServer",
-            "preLaunchTask": "swift: Build Debug FOSShowcaseWebServer"
+            "name": "Debug VaporWebServer",
+            "program": "${workspaceFolder:FOSShowcase}/.build/debug/VaporWebServer",
+            "preLaunchTask": "swift: Build Debug VaporWebServer"
         },
         {
             "type": "lldb",
@@ -68,9 +68,9 @@
             ],
             "args": [],
             "cwd": "${workspaceFolder:FOSShowcase}",
-            "name": "Release FOSShowcaseWebServer",
-            "program": "${workspaceFolder:FOSShowcase}/.build/release/FOSShowcaseWebServer",
-            "preLaunchTask": "swift: Build Release FOSShowcaseWebServer"
+            "name": "Release VaporWebServer",
+            "program": "${workspaceFolder:FOSShowcase}/.build/release/VaporWebServer",
+            "preLaunchTask": "swift: Build Release VaporWebServer"
         },
         {
             "type": "lldb",
