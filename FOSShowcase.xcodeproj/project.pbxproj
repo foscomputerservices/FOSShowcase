@@ -20,6 +20,13 @@
 		6333A6662C9368CA00C9659F /* FOSFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 6333A6652C9368CA00C9659F /* FOSFoundation */; };
 		6333A6682C9368CA00C9659F /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 6333A6672C9368CA00C9659F /* FOSMVVM */; };
 		6333A66A2C9368CA00C9659F /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 6333A6692C9368CA00C9659F /* FOSTesting */; };
+		6347AEF42C93CD410052EA04 /* FOSWatchShowcase Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6347AEF32C93CD410052EA04 /* FOSWatchShowcase Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6347AF2D2C93CFCD0052EA04 /* FOSFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 6347AF2C2C93CFCD0052EA04 /* FOSFoundation */; };
+		6347AF2F2C93CFCD0052EA04 /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 6347AF2E2C93CFCD0052EA04 /* FOSMVVM */; };
+		6347AF312C93CFCD0052EA04 /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 6347AF302C93CFCD0052EA04 /* FOSTesting */; };
+		6347AF342C93D1090052EA04 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */; };
+		6347AF352C93D1090052EA04 /* LandingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AEA2C8F6FC10086BAC5 /* LandingPageViewModel.swift */; };
+		6347AF362C93D1090052EA04 /* LandingPageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE92C8F6FC10086BAC5 /* LandingPageRequest.swift */; };
 		635E7AEC2C8F6FC10086BAC5 /* LandingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AEA2C8F6FC10086BAC5 /* LandingPageViewModel.swift */; };
 		635E7AED2C8F6FC10086BAC5 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */; };
 		635E7AEE2C8F6FC10086BAC5 /* LandingPageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE92C8F6FC10086BAC5 /* LandingPageRequest.swift */; };
@@ -43,20 +50,89 @@
 			remoteGlobalIDString = 630FAADF2C8B76D30046A1FF;
 			remoteInfo = FOSShowcase;
 		};
+		6347AEF52C93CD410052EA04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 630FAAD82C8B76D30046A1FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6347AEF22C93CD410052EA04;
+			remoteInfo = "FOSWatchShowcase Watch App";
+		};
+		6347AF062C93CD420052EA04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 630FAAD82C8B76D30046A1FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6347AEF22C93CD410052EA04;
+			remoteInfo = "FOSWatchShowcase Watch App";
+		};
+		6347AF102C93CD420052EA04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 630FAAD82C8B76D30046A1FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6347AEF22C93CD410052EA04;
+			remoteInfo = "FOSWatchShowcase Watch App";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6347AEE52C93CA7C0052EA04 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6347AF1A2C93CD420052EA04 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				6347AEF42C93CD410052EA04 /* FOSWatchShowcase Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		630FAAE02C8B76D30046A1FF /* FOSShowcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FOSShowcase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		630FAAF12C8B76D50046A1FF /* FOSShowcaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FOSShowcaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		630FAAFB2C8B76D50046A1FF /* FOSShowcaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FOSShowcaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6347AEEE2C93CD410052EA04 /* FOSWatchShowcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FOSWatchShowcase.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6347AEF32C93CD410052EA04 /* FOSWatchShowcase Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FOSWatchShowcase Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6347AF052C93CD420052EA04 /* FOSWatchShowcase Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FOSWatchShowcase Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6347AF0F2C93CD420052EA04 /* FOSWatchShowcase Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FOSWatchShowcase Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
 		635E7AE92C8F6FC10086BAC5 /* LandingPageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageRequest.swift; sourceTree = "<group>"; };
 		635E7AEA2C8F6FC10086BAC5 /* LandingPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6347AEB92C93C0CA0052EA04 /* Exceptions for "FOSShowcase" folder in "FOSShowcase" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"FOSShowcase-Info.plist",
+			);
+			target = 630FAADF2C8B76D30046A1FF /* FOSShowcase */;
+		};
+		6347AF332C93D0D60052EA04 /* Exceptions for "Watch App" folder in "FOSWatchShowcase Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FOSWatchShowcaseApp.swift,
+			);
+			target = 6347AEF22C93CD410052EA04 /* FOSWatchShowcase Watch App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		630FAAE22C8B76D30046A1FF /* FOSShowcase */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6347AEB92C93C0CA0052EA04 /* Exceptions for "FOSShowcase" folder in "FOSShowcase" target */,
+			);
 			name = FOSShowcase;
 			path = Sources/SwiftUIApp;
 			sourceTree = "<group>";
@@ -71,6 +147,27 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			name = FOSShowcaseUITests;
 			path = Tests/FOSShowcaseUITests;
+			sourceTree = "<group>";
+		};
+		6347AEBF2C93CA7B0052EA04 /* Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6347AF332C93D0D60052EA04 /* Exceptions for "Watch App" folder in "FOSWatchShowcase Watch App" target */,
+			);
+			name = "Watch App";
+			path = "Sources/Watch App";
+			sourceTree = "<group>";
+		};
+		6347AED02C93CA7C0052EA04 /* Watch AppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			name = "Watch AppTests";
+			path = "Tests/Watch AppTests";
+			sourceTree = "<group>";
+		};
+		6347AEDA2C93CA7C0052EA04 /* Watch AppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			name = "Watch AppUITests";
+			path = "Tests/Watch AppUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -113,6 +210,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6347AEF02C93CD410052EA04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6347AF2D2C93CFCD0052EA04 /* FOSFoundation in Frameworks */,
+				6347AF2F2C93CFCD0052EA04 /* FOSMVVM in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6347AF022C93CD420052EA04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6347AF312C93CFCD0052EA04 /* FOSTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6347AF0C2C93CD420052EA04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -124,6 +245,9 @@
 				630FAAE22C8B76D30046A1FF /* FOSShowcase */,
 				630FAAF42C8B76D50046A1FF /* FOSShowcaseTests */,
 				630FAAFE2C8B76D50046A1FF /* FOSShowcaseUITests */,
+				6347AEBF2C93CA7B0052EA04 /* Watch App */,
+				6347AED02C93CA7C0052EA04 /* Watch AppTests */,
+				6347AEDA2C93CA7C0052EA04 /* Watch AppUITests */,
 				630FAAE12C8B76D30046A1FF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -134,6 +258,10 @@
 				630FAAE02C8B76D30046A1FF /* FOSShowcase.app */,
 				630FAAF12C8B76D50046A1FF /* FOSShowcaseTests.xctest */,
 				630FAAFB2C8B76D50046A1FF /* FOSShowcaseUITests.xctest */,
+				6347AEEE2C93CD410052EA04 /* FOSWatchShowcase.app */,
+				6347AEF32C93CD410052EA04 /* FOSWatchShowcase Watch App.app */,
+				6347AF052C93CD420052EA04 /* FOSWatchShowcase Watch AppTests.xctest */,
+				6347AF0F2C93CD420052EA04 /* FOSWatchShowcase Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,6 +295,7 @@
 				630FAADC2C8B76D30046A1FF /* Sources */,
 				630FAADD2C8B76D30046A1FF /* Frameworks */,
 				630FAADE2C8B76D30046A1FF /* Resources */,
+				6347AEE52C93CA7C0052EA04 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
@@ -244,6 +373,87 @@
 			productReference = 630FAAFB2C8B76D50046A1FF /* FOSShowcaseUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		6347AEED2C93CD410052EA04 /* FOSWatchShowcase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6347AF1B2C93CD420052EA04 /* Build configuration list for PBXNativeTarget "FOSWatchShowcase" */;
+			buildPhases = (
+				6347AEEC2C93CD410052EA04 /* Resources */,
+				6347AF1A2C93CD420052EA04 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6347AEF62C93CD410052EA04 /* PBXTargetDependency */,
+			);
+			name = FOSWatchShowcase;
+			packageProductDependencies = (
+			);
+			productName = FOSWatchShowcase;
+			productReference = 6347AEEE2C93CD410052EA04 /* FOSWatchShowcase.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		6347AEF22C93CD410052EA04 /* FOSWatchShowcase Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6347AF172C93CD420052EA04 /* Build configuration list for PBXNativeTarget "FOSWatchShowcase Watch App" */;
+			buildPhases = (
+				6347AEEF2C93CD410052EA04 /* Sources */,
+				6347AEF02C93CD410052EA04 /* Frameworks */,
+				6347AEF12C93CD410052EA04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FOSWatchShowcase Watch App";
+			packageProductDependencies = (
+				6347AF2C2C93CFCD0052EA04 /* FOSFoundation */,
+				6347AF2E2C93CFCD0052EA04 /* FOSMVVM */,
+			);
+			productName = "FOSWatchShowcase Watch App";
+			productReference = 6347AEF32C93CD410052EA04 /* FOSWatchShowcase Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6347AF042C93CD420052EA04 /* FOSWatchShowcase Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6347AF1E2C93CD420052EA04 /* Build configuration list for PBXNativeTarget "FOSWatchShowcase Watch AppTests" */;
+			buildPhases = (
+				6347AF012C93CD420052EA04 /* Sources */,
+				6347AF022C93CD420052EA04 /* Frameworks */,
+				6347AF032C93CD420052EA04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6347AF072C93CD420052EA04 /* PBXTargetDependency */,
+			);
+			name = "FOSWatchShowcase Watch AppTests";
+			packageProductDependencies = (
+				6347AF302C93CFCD0052EA04 /* FOSTesting */,
+			);
+			productName = "FOSWatchShowcase Watch AppTests";
+			productReference = 6347AF052C93CD420052EA04 /* FOSWatchShowcase Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6347AF0E2C93CD420052EA04 /* FOSWatchShowcase Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6347AF212C93CD420052EA04 /* Build configuration list for PBXNativeTarget "FOSWatchShowcase Watch AppUITests" */;
+			buildPhases = (
+				6347AF0B2C93CD420052EA04 /* Sources */,
+				6347AF0C2C93CD420052EA04 /* Frameworks */,
+				6347AF0D2C93CD420052EA04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6347AF112C93CD420052EA04 /* PBXTargetDependency */,
+			);
+			name = "FOSWatchShowcase Watch AppUITests";
+			packageProductDependencies = (
+			);
+			productName = "FOSWatchShowcase Watch AppUITests";
+			productReference = 6347AF0F2C93CD420052EA04 /* FOSWatchShowcase Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -264,6 +474,20 @@
 					630FAAFA2C8B76D50046A1FF = {
 						CreatedOnToolsVersion = 16.0;
 						TestTargetID = 630FAADF2C8B76D30046A1FF;
+					};
+					6347AEED2C93CD410052EA04 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					6347AEF22C93CD410052EA04 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					6347AF042C93CD420052EA04 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 6347AEF22C93CD410052EA04;
+					};
+					6347AF0E2C93CD420052EA04 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 6347AEF22C93CD410052EA04;
 					};
 				};
 			};
@@ -287,6 +511,10 @@
 				630FAADF2C8B76D30046A1FF /* FOSShowcase */,
 				630FAAF02C8B76D50046A1FF /* FOSShowcaseTests */,
 				630FAAFA2C8B76D50046A1FF /* FOSShowcaseUITests */,
+				6347AEED2C93CD410052EA04 /* FOSWatchShowcase */,
+				6347AEF22C93CD410052EA04 /* FOSWatchShowcase Watch App */,
+				6347AF042C93CD420052EA04 /* FOSWatchShowcase Watch AppTests */,
+				6347AF0E2C93CD420052EA04 /* FOSWatchShowcase Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -307,6 +535,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		630FAAF92C8B76D50046A1FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6347AEEC2C93CD410052EA04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6347AEF12C93CD410052EA04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6347AF032C93CD420052EA04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6347AF0D2C93CD420052EA04 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -340,6 +596,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6347AEEF2C93CD410052EA04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6347AF342C93D1090052EA04 /* LandingPageView.swift in Sources */,
+				6347AF352C93D1090052EA04 /* LandingPageViewModel.swift in Sources */,
+				6347AF362C93D1090052EA04 /* LandingPageRequest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6347AF012C93CD420052EA04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6347AF0B2C93CD420052EA04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -352,6 +632,21 @@
 			isa = PBXTargetDependency;
 			target = 630FAADF2C8B76D30046A1FF /* FOSShowcase */;
 			targetProxy = 630FAAFC2C8B76D50046A1FF /* PBXContainerItemProxy */;
+		};
+		6347AEF62C93CD410052EA04 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6347AEF22C93CD410052EA04 /* FOSWatchShowcase Watch App */;
+			targetProxy = 6347AEF52C93CD410052EA04 /* PBXContainerItemProxy */;
+		};
+		6347AF072C93CD420052EA04 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6347AEF22C93CD410052EA04 /* FOSWatchShowcase Watch App */;
+			targetProxy = 6347AF062C93CD420052EA04 /* PBXContainerItemProxy */;
+		};
+		6347AF112C93CD420052EA04 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6347AEF22C93CD410052EA04 /* FOSWatchShowcase Watch App */;
+			targetProxy = 6347AF102C93CD420052EA04 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -490,6 +785,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				ASSETCATALOG_COMPILER_INCLUDE_INFOPLIST_LOCALIZATIONS = NO;
 				CODE_SIGN_ENTITLEMENTS = Sources/SwiftUIApp/FOSShowcase.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -500,11 +796,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Sources/SwiftUIApp/FOSShowcase-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "FOS Portal";
+				INFOPLIST_KEY_CFBundleDisplayName = "FOS Showcase";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -514,11 +810,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSShowcase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2,3,7";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TVOS_DEPLOYMENT_TARGET = 17.6;
 				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -530,6 +826,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				ASSETCATALOG_COMPILER_INCLUDE_INFOPLIST_LOCALIZATIONS = NO;
 				CODE_SIGN_ENTITLEMENTS = Sources/SwiftUIApp/FOSShowcase.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -540,11 +837,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Sources/SwiftUIApp/FOSShowcase-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "FOS Portal";
+				INFOPLIST_KEY_CFBundleDisplayName = "FOS Showcase";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -554,11 +851,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSShowcase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2,3,7";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TVOS_DEPLOYMENT_TARGET = 17.6;
 				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -571,6 +868,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J9VR68AE7U;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSShowcaseTests;
@@ -588,6 +886,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J9VR68AE7U;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSShowcaseTests;
@@ -605,6 +904,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J9VR68AE7U;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSShowcaseUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -621,12 +921,191 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J9VR68AE7U;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSShowcaseUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = FOSShowcase;
+			};
+			name = Release;
+		};
+		6347AF182C93CD420052EA04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Sources/Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = J9VR68AE7U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = FOSWatchShowcase;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSWatchShowcase.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		6347AF192C93CD420052EA04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Sources/Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = J9VR68AE7U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = FOSWatchShowcase;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSWatchShowcase.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		6347AF1C2C93CD420052EA04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J9VR68AE7U;
+				INFOPLIST_KEY_CFBundleDisplayName = FOSWatchShowcase;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSWatchShowcase;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		6347AF1D2C93CD420052EA04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J9VR68AE7U;
+				INFOPLIST_KEY_CFBundleDisplayName = FOSWatchShowcase;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSWatchShowcase;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6347AF1F2C93CD420052EA04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J9VR68AE7U;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.foscomputerservices.FOSWatchShowcase-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FOSWatchShowcase Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FOSWatchShowcase Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		6347AF202C93CD420052EA04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J9VR68AE7U;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.foscomputerservices.FOSWatchShowcase-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FOSWatchShowcase Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FOSWatchShowcase Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		6347AF222C93CD420052EA04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J9VR68AE7U;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.foscomputerservices.FOSWatchShowcase-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "FOSWatchShowcase Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		6347AF232C93CD420052EA04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J9VR68AE7U;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.foscomputerservices.FOSWatchShowcase-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "FOSWatchShowcase Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
 		};
@@ -665,6 +1144,42 @@
 			buildConfigurations = (
 				630FAB0C2C8B76D50046A1FF /* Debug */,
 				630FAB0D2C8B76D50046A1FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6347AF172C93CD420052EA04 /* Build configuration list for PBXNativeTarget "FOSWatchShowcase Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6347AF182C93CD420052EA04 /* Debug */,
+				6347AF192C93CD420052EA04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6347AF1B2C93CD420052EA04 /* Build configuration list for PBXNativeTarget "FOSWatchShowcase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6347AF1C2C93CD420052EA04 /* Debug */,
+				6347AF1D2C93CD420052EA04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6347AF1E2C93CD420052EA04 /* Build configuration list for PBXNativeTarget "FOSWatchShowcase Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6347AF1F2C93CD420052EA04 /* Debug */,
+				6347AF202C93CD420052EA04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6347AF212C93CD420052EA04 /* Build configuration list for PBXNativeTarget "FOSWatchShowcase Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6347AF222C93CD420052EA04 /* Debug */,
+				6347AF232C93CD420052EA04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -743,6 +1258,21 @@
 			productName = FOSMVVM;
 		};
 		6333A6692C9368CA00C9659F /* FOSTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6333A6642C9368CA00C9659F /* XCRemoteSwiftPackageReference "FOSUtilities" */;
+			productName = FOSTesting;
+		};
+		6347AF2C2C93CFCD0052EA04 /* FOSFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6333A6642C9368CA00C9659F /* XCRemoteSwiftPackageReference "FOSUtilities" */;
+			productName = FOSFoundation;
+		};
+		6347AF2E2C93CFCD0052EA04 /* FOSMVVM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6333A6642C9368CA00C9659F /* XCRemoteSwiftPackageReference "FOSUtilities" */;
+			productName = FOSMVVM;
+		};
+		6347AF302C93CFCD0052EA04 /* FOSTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6333A6642C9368CA00C9659F /* XCRemoteSwiftPackageReference "FOSUtilities" */;
 			productName = FOSTesting;
