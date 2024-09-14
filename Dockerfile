@@ -2,7 +2,7 @@
 # Build image
 # ================================
 
-FROM swiftlang:nightly-6.0-jammy AS build
+FROM swiftlang/swift:nightly-6.0-jammy AS build
 
 # Install OS updates
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
@@ -34,7 +34,7 @@ RUN swift build -c release \
 WORKDIR /staging
 
 # Copy main executable to staging area
-RUN cp "$(swift build --package-path /build -c release --show-bin-path)/WebServer" ./
+RUN cp "$(swift build --package-path /build -c release --show-bin-path)/VaporWebServer" ./
 
 # Copy static swift backtracer binary to staging area
 RUN cp "/usr/libexec/swift/linux/swift-backtrace-static" ./
@@ -50,7 +50,7 @@ RUN [ -d /build/Resources ] && { mv /build/Resources ./Resources && chmod -R a-w
 # ================================
 # Run image
 # ================================
-FROM ubuntu:noble
+FROM ubuntu:jammy
 
 # Make sure all system packages are up to date, and install only essential packages.
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
@@ -61,19 +61,19 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
       ca-certificates \
       tzdata \
 # If your app or its dependencies import FoundationNetworking, also install `libcurl4`.
-      # libcurl4 \
+      libcurl4 \
 # If your app or its dependencies import FoundationXML, also install `libxml2`.
       # libxml2 \
     && rm -r /var/lib/apt/lists/*
 
-# Create a vapor user and group with /WebServer as its home directory
-RUN useradd --user-group --create-home --system --skel /dev/null --home-dir /WebServer vapor
+# Create a vapor user and group with /VaporWebServer as its home directory
+RUN useradd --user-group --create-home --system --skel /dev/null --home-dir /VaporWebServer vapor
 
 # Switch to the new home directory
-WORKDIR /WebServer
+WORKDIR /VaporWebServer
 
 # Copy built executable and any staged resources from builder
-COPY --from=build --chown=vapor:vapor /staging /WebServer
+COPY --from=build --chown=vapor:vapor /staging /VaporWebServer
 
 # Provide configuration needed by the built-in crash reporter and some sensible default behaviors.
 ENV SWIFT_BACKTRACE=enable=yes,sanitize=yes,threads=all,images=all,interactive=no,swift-backtrace=./swift-backtrace-static
@@ -85,5 +85,5 @@ USER vapor:vapor
 EXPOSE 8080
 
 # Start the Vapor service when the image is run, default to listening on 8080 in production environment
-ENTRYPOINT ["./FOSShowcaseServer"]
+ENTRYPOINT ["./VaporWebServer"]
 CMD ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
