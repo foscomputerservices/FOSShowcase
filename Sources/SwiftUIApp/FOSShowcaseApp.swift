@@ -26,22 +26,29 @@ struct FOSShowcaseApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LandingPageView.bind(
-                viewModel: $viewModel,
-                using: LandingPageRequest()
-            )
-            .task {
-                baseURL = await URL.baseURL
+            if let baseURL {
+                LandingPageView.bind(
+                    viewModel: $viewModel,
+                    using: LandingPageRequest()
+                )
+                .environment(
+                    MVVMEnvironment(
+                        serverBaseURL: baseURL
+                    ) {
+                        AnyView(
+                            Text((try? viewModel?.loadingTitle.localizedString) ?? "Loading...")
+                        )
+                    }
+                )
+            } else {
+                Text("...")
+                    .task {
+                        let url = await URL.baseURL
+                        if baseURL == nil {
+                            baseURL = url
+                        }
+                    }
             }
-            .environment(
-                MVVMEnvironment(
-                    serverBaseURL: baseURL ?? URL(string: "http://localhost:8080")!
-                ) {
-                    AnyView(
-                        Text((try? viewModel?.loadingTitle.localizedString) ?? "Loading...")
-                    )
-                }
-            )
         }
     }
 }
