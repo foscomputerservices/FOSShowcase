@@ -12,14 +12,13 @@
 #      Start app: docker-compose up app
 #       Stop all: docker-compose down
 #
-version: '3.7'
-
 x-shared_environment: &shared_environment
   LOG_LEVEL: ${LOG_LEVEL:-debug}
   
 services:
   app:
-    image: f-o-s-showcase:latest
+    image: foscompsvcs/fos-showcase-server:latest
+    platform: linux/amd64
     build:
       context: .
     environment:
