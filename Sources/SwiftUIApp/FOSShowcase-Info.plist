@@ -7,11 +7,10 @@
 		<key>UIImageName</key>
 		<string>AppIcon</string>
 	</dict>
-	<key>CFBundleIconName</key>
-	<string>AppIcon</string>
-	<key>CFBundleIcons.CFBundlePrimaryIcon</key>
-	<string>AppIcon</string>
-	<key>CFBundlePrimaryIcon</key>
-	<string>AppIcon</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<string>VisonOSAppIcon</string>
+	</dict>
 </dict>
 </plist>
