@@ -17,16 +17,13 @@
 		632162AC2C8F3F6F002B991F /* FOSFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 632162AB2C8F3F6F002B991F /* FOSFoundation */; };
 		632162AE2C8F3F6F002B991F /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 632162AD2C8F3F6F002B991F /* FOSMVVM */; };
 		632162B02C8F3F6F002B991F /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 632162AF2C8F3F6F002B991F /* FOSTesting */; };
-		6333A6662C9368CA00C9659F /* FOSFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 6333A6652C9368CA00C9659F /* FOSFoundation */; };
-		6333A6682C9368CA00C9659F /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 6333A6672C9368CA00C9659F /* FOSMVVM */; };
-		6333A66A2C9368CA00C9659F /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 6333A6692C9368CA00C9659F /* FOSTesting */; };
 		6347AEF42C93CD410052EA04 /* FOSWatchShowcase Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6347AEF32C93CD410052EA04 /* FOSWatchShowcase Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		6347AF2D2C93CFCD0052EA04 /* FOSFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 6347AF2C2C93CFCD0052EA04 /* FOSFoundation */; };
-		6347AF2F2C93CFCD0052EA04 /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 6347AF2E2C93CFCD0052EA04 /* FOSMVVM */; };
-		6347AF312C93CFCD0052EA04 /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 6347AF302C93CFCD0052EA04 /* FOSTesting */; };
 		6347AF342C93D1090052EA04 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */; };
 		6347AF352C93D1090052EA04 /* LandingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AEA2C8F6FC10086BAC5 /* LandingPageViewModel.swift */; };
 		6347AF362C93D1090052EA04 /* LandingPageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE92C8F6FC10086BAC5 /* LandingPageRequest.swift */; };
+		6350EE942C9F577D00EEC17D /* FOSFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 6350EE932C9F577D00EEC17D /* FOSFoundation */; };
+		6350EE962C9F577D00EEC17D /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 6350EE952C9F577D00EEC17D /* FOSMVVM */; };
+		6350EE982C9F577D00EEC17D /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 6350EE972C9F577D00EEC17D /* FOSTesting */; };
 		635E7AEC2C8F6FC10086BAC5 /* LandingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AEA2C8F6FC10086BAC5 /* LandingPageViewModel.swift */; };
 		635E7AED2C8F6FC10086BAC5 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */; };
 		635E7AEE2C8F6FC10086BAC5 /* LandingPageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE92C8F6FC10086BAC5 /* LandingPageRequest.swift */; };
@@ -182,10 +179,10 @@
 				632162AE2C8F3F6F002B991F /* FOSMVVM in Frameworks */,
 				632162AC2C8F3F6F002B991F /* FOSFoundation in Frameworks */,
 				631A43762C9234B8005692FF /* FOSMVVM in Frameworks */,
-				6333A6682C9368CA00C9659F /* FOSMVVM in Frameworks */,
+				6350EE962C9F577D00EEC17D /* FOSMVVM in Frameworks */,
 				639D68B12C92A513003C0601 /* FOSMVVM in Frameworks */,
 				631A43742C9234B8005692FF /* FOSFoundation in Frameworks */,
-				6333A6662C9368CA00C9659F /* FOSFoundation in Frameworks */,
+				6350EE942C9F577D00EEC17D /* FOSFoundation in Frameworks */,
 				6308ECD42C8BCABF00C3463D /* FOSMVVM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,7 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6333A66A2C9368CA00C9659F /* FOSTesting in Frameworks */,
+				6350EE982C9F577D00EEC17D /* FOSTesting in Frameworks */,
 				632162B02C8F3F6F002B991F /* FOSTesting in Frameworks */,
 				6308ECD62C8BCABF00C3463D /* FOSTesting in Frameworks */,
 				639D68B32C92A513003C0601 /* FOSTesting in Frameworks */,
@@ -214,8 +211,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6347AF2D2C93CFCD0052EA04 /* FOSFoundation in Frameworks */,
-				6347AF2F2C93CFCD0052EA04 /* FOSMVVM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +218,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6347AF312C93CFCD0052EA04 /* FOSTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,8 +308,8 @@
 				631A43752C9234B8005692FF /* FOSMVVM */,
 				639D68AE2C92A513003C0601 /* FOSFoundation */,
 				639D68B02C92A513003C0601 /* FOSMVVM */,
-				6333A6652C9368CA00C9659F /* FOSFoundation */,
-				6333A6672C9368CA00C9659F /* FOSMVVM */,
+				6350EE932C9F577D00EEC17D /* FOSFoundation */,
+				6350EE952C9F577D00EEC17D /* FOSMVVM */,
 			);
 			productName = FOSShowcase;
 			productReference = 630FAAE02C8B76D30046A1FF /* FOSShowcase.app */;
@@ -344,7 +338,7 @@
 				632162AF2C8F3F6F002B991F /* FOSTesting */,
 				631A43772C9234B8005692FF /* FOSTesting */,
 				639D68B22C92A513003C0601 /* FOSTesting */,
-				6333A6692C9368CA00C9659F /* FOSTesting */,
+				6350EE972C9F577D00EEC17D /* FOSTesting */,
 			);
 			productName = FOSShowcaseTests;
 			productReference = 630FAAF12C8B76D50046A1FF /* FOSShowcaseTests.xctest */;
@@ -406,8 +400,6 @@
 			);
 			name = "FOSWatchShowcase Watch App";
 			packageProductDependencies = (
-				6347AF2C2C93CFCD0052EA04 /* FOSFoundation */,
-				6347AF2E2C93CFCD0052EA04 /* FOSMVVM */,
 			);
 			productName = "FOSWatchShowcase Watch App";
 			productReference = 6347AEF32C93CD410052EA04 /* FOSWatchShowcase Watch App.app */;
@@ -428,7 +420,6 @@
 			);
 			name = "FOSWatchShowcase Watch AppTests";
 			packageProductDependencies = (
-				6347AF302C93CFCD0052EA04 /* FOSTesting */,
 			);
 			productName = "FOSWatchShowcase Watch AppTests";
 			productReference = 6347AF052C93CD420052EA04 /* FOSWatchShowcase Watch AppTests.xctest */;
@@ -501,7 +492,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				6308ECD72C8BCB1500C3463D /* XCRemoteSwiftPackageReference "swift-testing" */,
-				6333A6642C9368CA00C9659F /* XCRemoteSwiftPackageReference "FOSUtilities" */,
+				6350EE922C9F577D00EEC17D /* XCRemoteSwiftPackageReference "FOSUtilities" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 630FAAE12C8B76D30046A1FF /* Products */;
@@ -1195,7 +1186,7 @@
 				minimumVersion = 0.12.0;
 			};
 		};
-		6333A6642C9368CA00C9659F /* XCRemoteSwiftPackageReference "FOSUtilities" */ = {
+		6350EE922C9F577D00EEC17D /* XCRemoteSwiftPackageReference "FOSUtilities" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/foscomputerservices/FOSUtilities.git";
 			requirement = {
@@ -1247,34 +1238,19 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = FOSTesting;
 		};
-		6333A6652C9368CA00C9659F /* FOSFoundation */ = {
+		6350EE932C9F577D00EEC17D /* FOSFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6333A6642C9368CA00C9659F /* XCRemoteSwiftPackageReference "FOSUtilities" */;
+			package = 6350EE922C9F577D00EEC17D /* XCRemoteSwiftPackageReference "FOSUtilities" */;
 			productName = FOSFoundation;
 		};
-		6333A6672C9368CA00C9659F /* FOSMVVM */ = {
+		6350EE952C9F577D00EEC17D /* FOSMVVM */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6333A6642C9368CA00C9659F /* XCRemoteSwiftPackageReference "FOSUtilities" */;
+			package = 6350EE922C9F577D00EEC17D /* XCRemoteSwiftPackageReference "FOSUtilities" */;
 			productName = FOSMVVM;
 		};
-		6333A6692C9368CA00C9659F /* FOSTesting */ = {
+		6350EE972C9F577D00EEC17D /* FOSTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6333A6642C9368CA00C9659F /* XCRemoteSwiftPackageReference "FOSUtilities" */;
-			productName = FOSTesting;
-		};
-		6347AF2C2C93CFCD0052EA04 /* FOSFoundation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6333A6642C9368CA00C9659F /* XCRemoteSwiftPackageReference "FOSUtilities" */;
-			productName = FOSFoundation;
-		};
-		6347AF2E2C93CFCD0052EA04 /* FOSMVVM */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6333A6642C9368CA00C9659F /* XCRemoteSwiftPackageReference "FOSUtilities" */;
-			productName = FOSMVVM;
-		};
-		6347AF302C93CFCD0052EA04 /* FOSTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6333A6642C9368CA00C9659F /* XCRemoteSwiftPackageReference "FOSUtilities" */;
+			package = 6350EE922C9F577D00EEC17D /* XCRemoteSwiftPackageReference "FOSUtilities" */;
 			productName = FOSTesting;
 		};
 		639D68AE2C92A513003C0601 /* FOSFoundation */ = {

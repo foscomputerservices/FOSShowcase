@@ -21,48 +21,22 @@ import SwiftUI
 
 @main
 struct FOSShowcaseApp: App {
-    @State var baseURL: URL?
     @State var viewModel: LandingPageViewModel?
 
     var body: some Scene {
         WindowGroup {
-            if let baseURL {
-                LandingPageView.bind(
-                    viewModel: $viewModel,
-                    using: LandingPageRequest()
+            LandingPageView.bind(
+                viewModel: $viewModel
+            )
+            .environment(
+                MVVMEnvironment(
+                    deploymentURLs: [
+                        .production: URL(string: "https://api.foscomputerservices.com")!,
+                        .staging: URL(string: "https://staging.foscomputerservices.com")!,
+                        .debug: URL(string: "http://localhost:8080")!
+                     ]
                 )
-                .environment(
-                    MVVMEnvironment(
-                        serverBaseURL: baseURL
-                    ) {
-                        AnyView(
-                            Text((try? viewModel?.loadingTitle.localizedString) ?? "Loading...")
-                        )
-                    }
-                )
-            } else {
-                Text("...")
-                    .task {
-                        let url = await URL.baseURL
-                        if baseURL == nil {
-                            baseURL = url
-                        }
-                    }
-            }
-        }
-    }
-}
-
-extension URL {
-    static var baseURL: URL {
-        get async {
-            switch await Deployment.current {
-            case .production: URL(string: "https://api.foscomputerservices.com")!
-            case .staging: URL(string: "https://staging.foscomputerservices.com")!
-            case .debug: URL(string: "http://localhost:8080")!
-            case .custom(let name):
-                fatalError("Unsupported custom deployment: '\(name)'")
-            }
+            )
         }
     }
 }
