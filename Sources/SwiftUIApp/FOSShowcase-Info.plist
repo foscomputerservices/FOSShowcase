@@ -7,6 +7,8 @@
 		<key>UIImageName</key>
 		<string>AppIcon</string>
 	</dict>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
