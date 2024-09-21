@@ -9,5 +9,9 @@
 	</dict>
 	<key>CFBundleIconName</key>
 	<string>AppIcon</string>
+	<key>CFBundleIcons.CFBundlePrimaryIcon</key>
+	<string>AppIcon</string>
+	<key>CFBundlePrimaryIcon</key>
+	<string>AppIcon</string>
 </dict>
 </plist>
