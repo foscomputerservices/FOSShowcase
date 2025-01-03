@@ -48,7 +48,7 @@ private struct FOSShowcaseSite: Site {
     var author = "David Hunt"
 
     let homePage: LandingPage
-    var theme = MyTheme()
+    var layout = MainLayout()
 
     init(store: any LocalizationStore, locale: Locale) throws {
         let viewModel: LandingPageViewModel =

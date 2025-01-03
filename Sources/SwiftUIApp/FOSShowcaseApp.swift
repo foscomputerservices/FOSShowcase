@@ -24,6 +24,9 @@ public extension SystemVersion {
     static var currentApplicationVersion: Self { .v1_0 }
 
     // My application's versions
+
+    // REVIEWED dgh
+    // swiftlint:disable:next force_try
     static var v1_0: Self { .init(major: 1, minor: 0, patch: try! Bundle.main.appleOSVersion.patch) }
 }
 

@@ -21,7 +21,7 @@ import Foundation
 import Ignite
 import ViewModels
 
-struct LandingPage: StaticPage {
+struct LandingPage: StaticLayout {
     var title: String {
         // REVIEWED dgh: Not being localized is considered an internal error
         // swiftlint:disable:next force_try
@@ -30,7 +30,7 @@ struct LandingPage: StaticPage {
 
     let viewModel: LandingPageViewModel
 
-    func body(context: PublishingContext) -> [BlockElement] {
+    var body: some HTML {
         Text(viewModel.pageTitle)
             .font(.title1)
     }

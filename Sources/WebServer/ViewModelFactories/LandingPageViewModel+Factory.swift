@@ -21,8 +21,10 @@ import Foundation
 import Vapor
 import ViewModels
 
-extension LandingPageViewModel: ViewModelFactory {
-    public static func model(_ req: Vapor.Request, vmRequest: LandingPageRequest) async throws -> Self {
+extension LandingPageViewModel: VaporViewModelFactory {
+    public typealias VMRequest = LandingPageRequest
+
+    public static func model(context: VaporModelFactoryContext<VMRequest>) async throws -> Self {
         .init()
     }
 }
