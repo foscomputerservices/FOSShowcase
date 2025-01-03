@@ -1,5 +1,25 @@
 [
   {
+    "fingerprint" : "8d712376c99fc0267aa0e41fea732babe365270a",
+    "packageIdentity" : "swift-case-paths",
+    "targetName" : "CasePathsMacros"
+  },
+  {
+    "fingerprint" : "d3a5af3038a09add4d7682f66555d6212058a3c0",
+    "packageIdentity" : "swift-dependencies",
+    "targetName" : "DependenciesMacrosPlugin"
+  },
+  {
+    "fingerprint" : "8e8ca36c02abc7775a3ab81f9468c0df5fe22c2c",
+    "packageIdentity" : "swift-perception",
+    "targetName" : "PerceptionMacros"
+  },
+  {
+    "fingerprint" : "18c42c19cac3fafd61cab1156d4088664b7424ae",
+    "packageIdentity" : "swift-testing",
+    "targetName" : "TestingMacros"
+  },
+  {
     "fingerprint" : "1c8920aa063d37ac9d2884c867508e4ebc8e1e79",
     "packageIdentity" : "fosutilities",
     "targetName" : "FOSMacros"
