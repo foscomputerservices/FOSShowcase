@@ -17,27 +17,17 @@
 
 import FOSFoundation
 import FOSMVVM
+import Foundation
 import SwiftUI
-
-public extension SystemVersion {
-    // My application's current version
-    static var currentApplicationVersion: Self { .v1_0 }
-
-    // My application's versions
-
-    // REVIEWED dgh
-    // swiftlint:disable:next force_try
-    static var v1_0: Self { .init(major: 1, minor: 0, patch: try! Bundle.main.appleOSVersion.patch) }
-}
 
 @main
 struct FOSShowcaseApp: App {
     @State var viewModel: LandingPageViewModel?
 
     var body: some Scene {
-        let vmBinding = $viewModel
+        WindowGroup {
+            let vmBinding = $viewModel
 
-        return WindowGroup {
             LandingPageView.bind(
                 viewModel: vmBinding
             )

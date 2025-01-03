@@ -15,19 +15,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import FOSFoundation
 import FOSMVVM
 import Foundation
 import Vapor
 
 // configures your application
 public func configure(_ app: Application) async throws {
-    // uncomment to serve files from /Public folder
-    // app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
-    // register routes
-    try routes(app)
+    SystemVersion.setCurrentVersion(.currentApplicationVersion)
+    SystemVersion.setMinimumSupportedVersion(.vInitial)
 
     try app.initYamlLocalization(
         bundle: Bundle.module,
         resourceDirectoryName: "Resources"
     )
+
+    // uncomment to serve files from /Public folder
+    // app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
+    // register routes
+    try routes(app)
 }
