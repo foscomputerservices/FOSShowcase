@@ -1,7 +1,7 @@
 // FOSShowcaseTests.swift
 //
-// Created by David Hunt on 9/6/24
-// Copyright 2024 FOS Services, LLC
+// Created by David Hunt on 9/10/24
+// Copyright 2024 FOS Computer Services, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the  License);
 // you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//@testable import FOSShowcase
+// @testable import FOSShowcase
 import Testing
 
 struct FOSShowcaseTests {
