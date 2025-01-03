@@ -19,22 +19,34 @@ import FOSFoundation
 import FOSMVVM
 import SwiftUI
 
+public extension SystemVersion {
+    // My application's current version
+    static var currentApplicationVersion: Self { .v1_0 }
+
+    // My application's versions
+    static var v1_0: Self { .init(major:1, minor: 0, patch: try! Bundle.main.appleOSVersion.patch) }
+}
+
 @main
 struct FOSShowcaseApp: App {
     @State var viewModel: LandingPageViewModel?
 
     var body: some Scene {
-        WindowGroup {
+        let vmBinding = $viewModel
+
+        return WindowGroup {
             LandingPageView.bind(
-                viewModel: $viewModel
+                viewModel: vmBinding
             )
             .environment(
                 MVVMEnvironment(
+                    currentVersion: .currentApplicationVersion,
+                    appBundle: Bundle.main,
                     deploymentURLs: [
                         .production: URL(string: "https://api.foscomputerservices.com")!,
                         .staging: URL(string: "https://staging.foscomputerservices.com")!,
                         .debug: URL(string: "http://localhost:8080")!
-                     ]
+                    ]
                 )
             )
         }
