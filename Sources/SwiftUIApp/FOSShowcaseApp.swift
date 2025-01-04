@@ -33,7 +33,6 @@ struct FOSShowcaseApp: App {
             )
             .environment(
                 MVVMEnvironment(
-                    currentVersion: .currentApplicationVersion,
                     appBundle: Bundle.main,
                     deploymentURLs: [
                         .production: URL(string: "https://api.foscomputerservices.com")!,
