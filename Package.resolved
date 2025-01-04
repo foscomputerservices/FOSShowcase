@@ -34,7 +34,7 @@
       "location" : "https://github.com/foscomputerservices/FOSUtilities.git",
       "state" : {
         "branch" : "main",
-        "revision" : "1c8920aa063d37ac9d2884c867508e4ebc8e1e79"
+        "revision" : "1f3bd1184a98d6acaeb887962d6b8995358a151e"
       }
     },
     {
@@ -43,7 +43,7 @@
       "location" : "https://github.com/twostraws/Ignite.git",
       "state" : {
         "branch" : "main",
-        "revision" : "bc6531d55133aca16c0ff30021fb38f5b7f2aa26"
+        "revision" : "979c6e2a5f845812a38597ad1c7b4466c21c867e"
       }
     },
     {
