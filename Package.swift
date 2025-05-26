@@ -53,7 +53,8 @@ let package = Package(
                 .byName(name: "ViewModels"),
                 .product(name: "Vapor", package: "vapor"),
                 .product(name: "FOSFoundation", package: "FOSUtilities"),
-                .product(name: "FOSMVVM", package: "FOSUtilities")
+                .product(name: "FOSMVVM", package: "FOSUtilities"),
+                .product(name: "FOSMVVMVapor", package: "FOSUtilities")
             ],
             resources: [
                 .copy("../Resources")
