@@ -37,7 +37,12 @@ extension Application {
     private static func webServerURL<Request>(for request: Request) -> URL where Request: ViewModelRequest {
         // TODO: Support for baseURL
         // TODO: Use standard URL support from Request that uses Query
+        #if DEBUG
         .init(string: "http://localhost:8080")!
             .appendingPathComponent(Request.path)
+        #else
+            .init(string: "https://staging.foscomputerservices.com")!
+                .appendingPathComponent(Request.path)
+        #endif
     }
 }

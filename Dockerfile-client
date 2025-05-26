@@ -2,7 +2,7 @@
 # Build image
 # ================================
 
-FROM swift:6.0.3-noble AS build
+FROM swift:6.1.0-noble AS build
 
 # Install OS updates
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
@@ -28,13 +28,14 @@ COPY . .
 # N.B.: The static version of jemalloc is incompatible with the static Swift runtime.
 RUN swift build -c release \
                 --static-swift-stdlib \
-                -Xlinker -ljemalloc
+                -Xlinker -ljemalloc \
+                --product VaporLeafWebApp
 
 # Switch to the staging area
 WORKDIR /staging
 
 # Copy main executable to staging area
-RUN cp "$(swift build --package-path /build -c release --show-bin-path)/VaporWebServer" ./
+RUN cp "$(swift build --package-path /build -c release --show-bin-path)/VaporLeafWebApp" ./
 
 # Copy static swift backtracer binary to staging area
 RUN cp "/usr/libexec/swift/linux/swift-backtrace-static" ./
@@ -50,7 +51,7 @@ RUN [ -d /build/Resources ] && { mv /build/Resources ./Resources && chmod -R a-w
 # ================================
 # Run image
 # ================================
-FROM ubuntu:jammy
+FROM ubuntu:noble
 
 # Make sure all system packages are up to date, and install only essential packages.
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
@@ -66,14 +67,14 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
       # libxml2 \
     && rm -r /var/lib/apt/lists/*
 
-# Create a vapor user and group with /VaporWebServer as its home directory
-RUN useradd --user-group --create-home --system --skel /dev/null --home-dir /VaporWebServer vapor
+# Create a vapor user and group with /VaporLeafWebApp as its home directory
+RUN useradd --user-group --create-home --system --skel /dev/null --home-dir /VaporLeafWebApp vapor
 
 # Switch to the new home directory
-WORKDIR /VaporWebServer
+WORKDIR /VaporLeafWebApp
 
 # Copy built executable and any staged resources from builder
-COPY --from=build --chown=vapor:vapor /staging /VaporWebServer
+COPY --from=build --chown=vapor:vapor /staging /VaporLeafWebApp
 
 # Provide configuration needed by the built-in crash reporter and some sensible default behaviors.
 ENV SWIFT_BACKTRACE=enable=yes,sanitize=yes,threads=all,images=all,interactive=no,swift-backtrace=./swift-backtrace-static
@@ -81,9 +82,9 @@ ENV SWIFT_BACKTRACE=enable=yes,sanitize=yes,threads=all,images=all,interactive=n
 # Ensure all further commands run as the vapor user
 USER vapor:vapor
 
-# Let Docker bind to port 8080
-EXPOSE 8080
+# Let Docker bind to port 8082
+EXPOSE 8082
 
-# Start the Vapor service when the image is run, default to listening on 8080 in production environment
-ENTRYPOINT ["./VaporWebServer"]
-CMD ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
+# Start the Vapor service when the image is run, default to listening on 8082 in production environment
+ENTRYPOINT ["./VaporLeafWebApp"]
+CMD ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8082"]
