@@ -23,7 +23,7 @@ import ViewModels
 @main
 struct IgniteWebsite {
     static func main() async throws {
-        let site = try await FOSShowcaseSite(
+        var site = try await FOSShowcaseSite(
             store: Bundle.module.yamlLocalization(
                 resourceDirectoryName: "Resources"
             ),

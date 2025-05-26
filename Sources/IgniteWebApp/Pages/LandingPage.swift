@@ -20,7 +20,7 @@ import Foundation
 import Ignite
 import ViewModels
 
-struct LandingPage: StaticLayout {
+struct LandingPage: StaticPage {
     var title: String {
         // REVIEWED dgh: Not being localized is considered an internal error
         // swiftlint:disable:next force_try

@@ -16,6 +16,7 @@
 
 import FOSFoundation
 import FOSMVVM
+import FOSMVVMVapor
 import Foundation
 import Vapor
 import ViewModels
