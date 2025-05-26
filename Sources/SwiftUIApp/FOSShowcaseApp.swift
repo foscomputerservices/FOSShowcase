@@ -21,15 +21,10 @@ import SwiftUI
 
 @main
 struct FOSShowcaseApp: App {
-    @State var viewModel: LandingPageViewModel?
 
     var body: some Scene {
         WindowGroup {
-            let vmBinding = $viewModel
-
-            LandingPageView.bind(
-                viewModel: vmBinding
-            )
+            LandingPageView.bind()
             .environment(
                 MVVMEnvironment(
                     appBundle: Bundle.main,
