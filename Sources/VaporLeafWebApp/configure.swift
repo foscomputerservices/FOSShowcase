@@ -29,6 +29,8 @@ public func configure(_ app: Application) async throws {
     app.views.use(.leaf)
     app.http.server.configuration.port = 8082
 
+    app.leaf.tags["backendURL"] = BackendURLTag()
+
     let viewsPath = Bundle.module
         .url(forResource: "LandingPageView", withExtension: "leaf", subdirectory: "Views")!
         .deletingLastPathComponent()

@@ -1,1 +1,148 @@
-#(pageTitle)
+#extend("base_layout"):
+    #export("body"):
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <p class="navbar-brand" href="#">FOS Computer Services, LLC</p>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="banner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 style="color: #111827; font-size: 51px; font-style: normal; font-weight: 700; line-height: 60px;">
+                        <span>#(banner.titlePart1)</span>
+                        <span style="color: #2563EB; font-size: 51px; font-style: normal; font-weight: 700; line-height: 60px;">#(banner.titlePart2)</span>
+                        <span>#(banner.titlePart3)</span>
+                    </h1>
+                    <p style="color: #4B5563; font-size: 17px; font-style: normal; font-weight: 400; line-height: 28px;">#(banner.subtitle)</p>
+
+                    <a href="mailto:inquiry@foscomputerservices.com?subject=FOS Project Inquiry" class="btn btn-primary btn-lg">#(banner.getStartedButtonTitle)</a>
+                </div>
+                <div class="col-md-6 text-center" style="padding-top: 30px";>
+                    <img src="#backendURL()/Images/Landing Page/Banner.png" class="img-fluid rounded" alt="Banner Image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container px-4 my-5" id="services">
+        <h2 class="text-center mb-4" style="color: #111827; text-align: center; font-size: 30.6px; font-style: normal; font-weight: 700; line-height: 40px;">#(services.title)</h2>
+        <p style="color: #4B5563; text-align: center; font-size: 17px; font-style: normal; font-weight: 400; line-height: 28px;">#(services.subtitle)</p>
+        <div class="row gx-5">
+            <div class="col-md-4">
+                <div class=" services-item p-3 h-100">
+                    <img src="#backendURL()/Images/Landing Page/Service1.png" alt="Service Icon 1">
+                    <h3>#(services.service1Title)</h3>
+                    <p>#(services.service1Description)</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class=" services-item p-3 h-100">
+                    <img src="#backendURL()/Images/Landing Page/Service2.png" alt="Service Icon 2">
+                    <h3>#(services.service2Title)</h3>
+                    <p>#(services.service2Description)</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class=" services-item p-3 h-100">
+                    <img src="#backendURL()/Images/Landing Page/Service3.png" alt="Service Icon 3">
+                    <h3>#(services.service3Title)</h3>
+                    <p>#(services.service3Description)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center" style="padding-top: 30px";>
+                    <img src="#backendURL()/Images/Landing Page/About.png" class="img-fluid rounded" alt="About Image">
+                </div>
+                <div class="col-md-6">
+                    <h1 style="color: #111827; font-size: 30px; font-style: normal; font-weight: 700; line-height: 40px;">
+                        #(about.title)
+                    </h1>
+                    <div style="color: #4B5563; font-size: 13.6px; font-style: normal; font-weight: 400; line-height: 24px;">
+                        <p>#(about.subtitle1)</p>
+                        <p>#(about.subtitle2)</p>
+
+                        <div class="row pt-3"> <div class="col-6 d-flex align-items-start mb-3"> <img src="#backendURL()/Images/Landing Page/CheckMark.png" alt="Check" style="width: 20px; height: 20px; margin-right: 10px;">
+                            <p class="mb-0">#(about.fact1)</p>
+                        </div>
+                        <div class="col-6 d-flex align-items-start mb-3">
+                            <img src="#backendURL()/Images/Landing Page/CheckMark.png" alt="Check" style="width: 20px; height: 20px; margin-right: 10px;">
+                            <p class="mb-0">#(about.fact2)</p>
+                        </div>
+                        <div class="col-6 d-flex align-items-start mb-3">
+                            <img src="#backendURL()/Images/Landing Page/CheckMark.png" alt="Check" style="width: 20px; height: 20px; margin-right: 10px;">
+                            <p class="mb-0">#(about.fact3)</p>
+                        </div>
+                        <div class="col-6 d-flex align-items-start mb-3">
+                            <img src="#backendURL()/Images/Landing Page/CheckMark.png" alt="Check" style="width: 20px; height: 20px; margin-right: 10px;">
+                            <p class="mb-0">#(about.fact4)</p>
+                        </div>
+                        <div class="col-6 d-flex align-items-start mb-3">
+                            <img src="#backendURL()/Images/Landing Page/CheckMark.png" alt="Check" style="width: 20px; height: 20px; margin-right: 10px;">
+                            <p class="mb-0">#(about.fact5)</p>
+                        </div>
+                        <div class="col-6 d-flex align-items-start mb-3">
+                            <img src="#backendURL()/Images/Landing Page/CheckMark.png" alt="Check" style="width: 20px; height: 20px; margin-right: 10px;">
+                            <p class="mb-0">#(about.fact6)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 style="color: #FFF; font-size: 17px; font-style: normal; font-weight: 700; line-height: 28px;">#(footer.companyTitle)</h5>
+                    <p style="color: #9CA3AF; font-size: 13.6px; font-style: normal; font-weight: 400; line-height: 24px;">#(footer.aboutSubtitle)</p>
+                </div>
+                <div class="col-md-3">
+                    <h5 style="color: #FFF; font-size: 17px; font-style: normal; font-weight: 700; line-height: 28px;">#(footer.servicesTitle)</h5>
+                    <ul class="list-unstyled" style="color: #9CA3AF; font-size: 13.6px; font-style: normal; font-weight: 400; line-height: 24px;">
+                        <li>#(footer.service1Text)</li>
+                        <li>#(footer.service2Text)</li>
+                        <li>#(footer.service3Text)</li>
+                        <li>#(footer.service4Text)</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 style="color: #FFF; font-size: 17px; font-style: normal; font-weight: 700; line-height: 28px;">#(footer.quickLinksTitle)</h5>
+                    <ul class="list-unstyled" style="color: #9CA3AF; font-size: 13.6px; font-style: normal; font-weight: 400; line-height: 24px;">
+                        <li><a href="#">#(footer.quickLink1Text)</a></li>
+                        <li><a href="#about">#(footer.quickLink2Text)</a></li>
+                        <li><a href="#services">#(footer.quickLink3Text)</a></li>
+                        <li><a href="mailto:inquiry@foscomputerservices.com?subject=FOS Project Inquiry">#(footer.quickLink4Text)</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p style="color: #9CA3AF; text-align: center; font-size: 11.9px; font-style: normal; font-weight: 400; line-height: 20px;">#(footer.copyrightText)</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    #endexport
+#endextend

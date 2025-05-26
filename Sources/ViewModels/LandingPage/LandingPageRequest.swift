@@ -1,6 +1,6 @@
-// LandingPageViewModelTests.swift
+// LandingPageRequest.swift
 //
-// Copyright 2024 FOS Computer Services, LLC
+// Copyright 2025 FOS Computer Services, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the  License);
 // you may not use this file except in compliance with the License.
@@ -16,22 +16,13 @@
 
 import FOSFoundation
 import FOSMVVM
-import FOSTesting
 import Foundation
-import Testing
-import ViewModels
 
-@Suite("Landing Page ViewModel Tests")
-struct LandingPageViewModelTests: LocalizableTestCase {
-    @Test func structure() throws {
-        try expectTranslations(viewModel: LandingPageViewModel.self)
-    }
+public final class LandingPageRequest: ViewModelRequest {
+    public typealias Query = EmptyQuery
+    public let responseBody: LandingPageViewModel?
 
-    let locStore: LocalizationStore
-
-    init() async throws {
-        self.locStore = try await Self.loadLocalizationStore(
-            bundle: Bundle.module
-        )
+    public init(query: FOSMVVM.EmptyQuery? = nil, fragment: FOSMVVM.EmptyFragment? = nil, requestBody: FOSMVVM.EmptyBody? = nil, responseBody: LandingPageViewModel? = nil) {
+        self.responseBody = responseBody
     }
 }

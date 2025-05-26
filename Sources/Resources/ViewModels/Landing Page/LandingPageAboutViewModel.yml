@@ -1,0 +1,11 @@
+en:
+  LandingPageAboutViewModel:
+    title: "About Our Company"
+    subtitle1: "Founded by David Hunt, a software developer with over 36 years of software development experience, our consulting firm specializes in building high-quality iOS and macOS applications with scalable backend solutions.  We work closely with businesses of all sizes to deliver software that exceeds expectations."
+    subtitle2: "Our team brings deep technical expertise and a passion for creating exceptional digital experiences that help our clients to achieve their business objectives."
+    fact1: "15+ years of iOS and macOS development experience"
+    fact2: "Expertise in Swift, SwiftUI and Vapor"
+    fact3: "We embrace the Test-Driven-Development (TDD) process"
+    fact4: "Backend development with Vapor and Swift"
+    fact5: "Seamless integration between mobile apps and cloud services"
+    fact6: "Continuous support and maintenance services"
