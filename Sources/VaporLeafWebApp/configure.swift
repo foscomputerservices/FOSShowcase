@@ -31,9 +31,16 @@ public func configure(_ app: Application) async throws {
 
     app.leaf.tags["backendURL"] = BackendURLTag()
 
+    #if DEBUG
+    app.leaf.cache.isEnabled = false
+    #endif
+
     let viewsPath = Bundle.module
         .url(forResource: "LandingPageView", withExtension: "leaf", subdirectory: "Views")!
         .deletingLastPathComponent()
         .absoluteString
+        .replacingOccurrences(of: "file://", with: "")
+
     app.leaf.configuration = .init(rootDirectory: viewsPath)
+    app.logger.info("Views path: \(app.leaf.configuration.rootDirectory)")
 }
