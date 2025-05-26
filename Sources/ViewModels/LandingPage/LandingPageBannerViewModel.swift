@@ -1,6 +1,6 @@
-// LandingPageRequest.swift
+// LandingPageBannerViewModel.swift
 //
-// Copyright 2024 FOS Computer Services, LLC
+// Copyright 2025 FOS Computer Services, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the  License);
 // you may not use this file except in compliance with the License.
@@ -18,11 +18,21 @@ import FOSFoundation
 import FOSMVVM
 import Foundation
 
-public final class LandingPageRequest: ViewModelRequest {
-    public typealias Query = EmptyQuery
-    public let responseBody: LandingPageViewModel?
+@ViewModel
+public struct LandingPageBannerViewModel {
+    @LocalizedString public var titlePart1
+    @LocalizedString public var titlePart2
+    @LocalizedString public var titlePart3
+    @LocalizedString public var subtitle
+    @LocalizedString public var getStartedButtonTitle
 
-    public init(query: FOSMVVM.EmptyQuery? = nil, fragment: FOSMVVM.EmptyFragment? = nil, requestBody: FOSMVVM.EmptyBody? = nil, responseBody: LandingPageViewModel? = nil) {
-        self.responseBody = responseBody
+    public var vmId = ViewModelId()
+
+    public init() {}
+}
+
+public extension LandingPageBannerViewModel {
+    static func stub() -> Self {
+        .init()
     }
 }

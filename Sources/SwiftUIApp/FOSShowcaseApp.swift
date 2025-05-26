@@ -21,20 +21,19 @@ import SwiftUI
 
 @main
 struct FOSShowcaseApp: App {
-
     var body: some Scene {
         WindowGroup {
             LandingPageView.bind()
-            .environment(
-                MVVMEnvironment(
-                    appBundle: Bundle.main,
-                    deploymentURLs: [
-                        .production: URL(string: "https://api.foscomputerservices.com")!,
-                        .staging: URL(string: "https://staging.foscomputerservices.com")!,
-                        .debug: URL(string: "http://localhost:8080")!
-                    ]
+                .environment(
+                    MVVMEnvironment(
+                        appBundle: Bundle.main,
+                        deploymentURLs: [
+                            .production: URL(string: "https://api.foscomputerservices.com")!,
+                            .staging: URL(string: "https://staging.foscomputerservices.com")!,
+                            .debug: URL(string: "http://localhost:8080")!
+                        ]
+                    )
                 )
-            )
         }
     }
 }

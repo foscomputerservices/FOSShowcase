@@ -1,0 +1,15 @@
+en:
+  LandingPageFooterViewModel:
+    companyTitle: "FOS Computer Services, LLC"
+    aboutSubtitle: "Expert iOS and macOS application development with robust backend solutions for businesses that demand excellence."
+    servicesTitle: "Services"
+    service1Text: "iOS Development"
+    service2Text: "macOS Development"
+    service3Text: "Backend Services"
+    service4Text: "API Development"
+    quickLinksTitle: "Quick Links"
+    quickLink1Text: "Home"
+    quickLink2Text: "About"
+    quickLink3Text: "Services"
+    quickLink4Text: "Contact"
+    copyrightText: "© 2025 FOS Computer Services, LLC.  All rights reserved."

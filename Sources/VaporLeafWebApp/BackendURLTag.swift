@@ -1,6 +1,6 @@
-// MainLayout.swift
+// BackendURLTag.swift
 //
-// Copyright 2024 FOS Computer Services, LLC
+// Copyright 2025 FOS Computer Services, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the  License);
 // you may not use this file except in compliance with the License.
@@ -14,13 +14,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Foundation
-import Ignite
+import Leaf
 
-struct MainLayout: Layout {
-    var body: some Document {
-        Head { }
+struct BackendURLTag: LeafTag {
+    var name: String { "backendURL" }
 
-        Body()
+    func render(_ context: LeafContext) throws -> LeafData {
+        #if DEBUG
+        "http://localhost:8080"
+        #else
+        "https://staging.foscomputerservices.com"
+        #endif
     }
 }

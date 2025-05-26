@@ -25,9 +25,19 @@ public struct LandingPageViewModel: RequestableViewModel {
     @LocalizedString public var loadingTitle
     @LocalizedString public var pageTitle
 
+    public let banner: LandingPageBannerViewModel
+    public let services: LandingPageServicesViewModel
+    public let about: LandingPageAboutViewModel
+    public let footer: LandingPageFooterViewModel
+
     public var vmId = ViewModelId()
 
-    public init() {}
+    public init() {
+        self.banner = .init()
+        self.services = .init()
+        self.about = .init()
+        self.footer = .init()
+    }
 }
 
 public extension LandingPageViewModel {

@@ -1,0 +1,10 @@
+en:
+  LandingPageServicesViewModel:
+    title: "Our Services"
+    subtitle: "We specialize in creating seamless experiences across Apple platforms and robust backend solutions."
+    service1Title: "iOS App Development"
+    service1Description: "Native iOS applications built with Swift and SwiftUI that deliver exceptional user experiences and performance."
+    service2Title: "macOS App Development"
+    service2Description: "Professional desktop applications for macOS that leverage the full power of Apple's ecosystem."
+    service3Title: "Backend Development"
+    service3Description: "Scalable and secure backend services that support your applications with reliable API endpoints and data management."
