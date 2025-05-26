@@ -18,6 +18,7 @@ import FOSFoundation
 import FOSMVVM
 import Foundation
 
+@ViewModel
 public struct LandingPageViewModel: RequestableViewModel {
     public typealias Request = LandingPageRequest
 
