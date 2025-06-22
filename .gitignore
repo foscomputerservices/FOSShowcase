@@ -8,3 +8,4 @@ DerivedData/
 .netrc
 /.build 2
 .docker-compose.yml.swp
+ssl

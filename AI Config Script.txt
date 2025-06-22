@@ -1,0 +1,23 @@
+Treat the attached files as follows:
+
+- docker-compose.yml - a docker compose file
+- Dockerfile-client.txt - a docker file for the front-end 'client' server
+- Dockerfile-server.txt - a docker file for the back-end server
+
+Modify the environment to support the following:
+
+- An nginx server should be placed in front of the front-end and back-end servers
+- The nginx front-end port should be 443
+- The nginx back-end port should be 8081
+- The client and server ports should be 8082 and 8083 respectively
+- Nginx should forward 443 requests to the front-end server
+- Nginx should forward 8081 request to the back-end server
+- Nginx should redirect port 80 requests to port 443
+- The machine running docker will be macos sequoia 15.5
+- The macos machine has a volume /Volumes/FOSWebService on which the logs should be placed for the servers and nginx
+- Retrieve an SSL certificate for the domain *.foscomputerservices.com from AWS Certificate Manager and install it in the nginx server
+- On the macos machine install postgress database
+- Make the postgress database available to the back-end server
+- The postgress database files should be stored on /Volumes/FOSWebService on the macos machine
+- Use nginx version 1.28.0
+- Use postgress version 17
