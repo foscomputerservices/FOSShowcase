@@ -24,10 +24,6 @@ func routes(_ app: Application) throws {
         "It works!"
     }
 
-    app.get("hello") { _ async -> String in
-        "Hello, world!"
-    }
-
     let unauthGroup = app.routes
     try unauthGroup.register(viewModel: LandingPageViewModel.self)
 }

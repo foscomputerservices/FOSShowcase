@@ -38,10 +38,10 @@ extension Application {
         // TODO: Support for baseURL
         // TODO: Use standard URL support from Request that uses Query
         #if DEBUG
-        .init(string: "http://localhost:8080")!
+        .init(string: "http://localhost:8083")!
             .appendingPathComponent(Request.path)
         #else
-            .init(string: "https://staging.foscomputerservices.com")!
+            .init(string: "http://server:8083")!
                 .appendingPathComponent(Request.path)
         #endif
     }

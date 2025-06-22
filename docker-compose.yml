@@ -14,27 +14,74 @@
 #
 x-shared_environment: &shared_environment
   LOG_LEVEL: ${LOG_LEVEL:-debug}
-  
+
 services:
-  server:
-    image: foscompsvcs/fos-showcase-server:latest
-    platform: linux/amd64
+  nginx:
     build:
       context: .
-    environment:
-      <<: *shared_environment
+      dockerfile: Dockerfile-nginx # Use the Dockerfile for Nginx
     ports:
-      - '8080:8080'
-    # user: '0' # uncomment to run as root for testing purposes even though Dockerfile defines 'vapor' user.
-    command: ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
+      - '80:80' # Nginx frontend HTTP/S (Nginx handles redirect from 443 to 443)
+      - '443:443' # Nginx frontend HTTP/S (Nginx handles redirect from 443 to 443)
+      - '8081:8081' # Nginx backend HTTP/S
+    volumes:
+      - './nginx.conf:/etc/nginx/nginx.conf:ro' # Mount the Nginx config
+      - './ssl:/etc/nginx/ssl:ro'               # Mount SSL certificates (create this directory on host)
+      - '/Volumes/FOSWebService/logs/nginx:/var/log/nginx' # Mount Nginx logs to host volume
+    depends_on:
+      - client
+      - server
+    restart: unless-stopped
+
   client:
     image: foscompsvcs/fos-showcase-client:latest
     platform: linux/amd64
     build:
       context: .
+      dockerfile: Dockerfile-client
     environment:
       <<: *shared_environment
-    ports:
-      - '8082:8082'
+    # Ports are now internal, exposed to Nginx, not directly to the host
+    expose:
+      - '8082' # Expose internal port for Nginx to access
+    volumes:
+      - '/Volumes/FOSWebService/logs/client:/var/log/vapor_client' # Mount client logs to host volume
     # user: '0' # uncomment to run as root for testing purposes even though Dockerfile defines 'vapor' user.
     command: ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8082"]
+
+  server:
+    image: foscompsvcs/fos-showcase-server:latest
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile-server
+    environment:
+      <<: *shared_environment
+      # Add PostgreSQL connection details for the backend server
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_NAME: mydatabase # Replace with your database name
+      DATABASE_USER: myuser     # Replace with your database user
+      DATABASE_PASSWORD: mypassword # Replace with your database password
+    # Ports are now internal, exposed to Nginx, not directly to the host
+    expose:
+      - '8083' # Expose internal port for Nginx to access
+    volumes:
+      - '/Volumes/FOSWebService/logs/server:/var/log/vapor_server' # Mount server logs to host volume
+    depends_on:
+      - postgres # Server depends on the PostgreSQL database
+    # user: '0' # uncomment to run as root for testing purposes even though Dockerfile defines 'vapor' user.
+    command: ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8083"]
+
+  postgres:
+    image: postgres:17 # Updated to PostgreSQL version 17
+    environment:
+      POSTGRES_DB: mydatabase     # Database name
+      POSTGRES_USER: myuser       # Database user
+      POSTGRES_PASSWORD: mypassword # Database password
+      PGDATA: /var/lib/postgresql/data/pgdata # Ensure data is stored in the volume
+    volumes:
+      - '/Volumes/FOSWebService/postgres_data:/var/lib/postgresql/data' # Mount PostgreSQL data to host volume
+    ports:
+      - '5432:5432' # Expose PostgreSQL port to the host for direct access if needed (optional, can be removed)
+    restart: unless-stopped
