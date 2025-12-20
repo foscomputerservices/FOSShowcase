@@ -1,6 +1,5 @@
 // WebServerTests.swift
 //
-// Created by David Hunt on 9/10/24
 // Copyright 2024 FOS Computer Services, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the  License);
@@ -21,7 +20,7 @@ import Vapor
 
 @Suite("Vapor Initialization Tests")
 struct VaporInitTests {
-    @Test func testYamlStoreInit() {
+    @Test func yamlStoreInit() {
         let app = Application()
         // app.initYamlLocalization(
         //     bundle: Bundle.module,

@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.1
 import PackageDescription
 
 let package = Package(
@@ -23,7 +23,7 @@ let package = Package(
     ],
     dependencies: [
         // 🍎 frameworks
-        .package(url: "https://github.com/swiftlang/swift-testing.git", revision: "18c42c19cac3fafd61cab1156d4088664b7424ae"),
+        .package(url: "https://github.com/swiftlang/swift-testing.git", revision: "43b6f88e2f2712e0f2a97e6acc75b55f22234299"),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
         // .package(url: "https://github.com/apple/swift-nio.git", from: "2.65.0"),
 
@@ -53,7 +53,8 @@ let package = Package(
                 .byName(name: "ViewModels"),
                 .product(name: "Vapor", package: "vapor"),
                 .product(name: "FOSFoundation", package: "FOSUtilities"),
-                .product(name: "FOSMVVM", package: "FOSUtilities")
+                .product(name: "FOSMVVM", package: "FOSUtilities"),
+                .product(name: "FOSMVVMVapor", package: "FOSUtilities")
             ],
             resources: [
                 .copy("../Resources")

@@ -1,6 +1,5 @@
 // routes.swift
 //
-// Created by David Hunt on 9/10/24
 // Copyright 2024 FOS Computer Services, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the  License);
@@ -38,7 +37,12 @@ extension Application {
     private static func webServerURL<Request>(for request: Request) -> URL where Request: ViewModelRequest {
         // TODO: Support for baseURL
         // TODO: Use standard URL support from Request that uses Query
-        .init(string: "http://localhost:8080")!
+        #if DEBUG
+        .init(string: "http://localhost:8083")!
             .appendingPathComponent(Request.path)
+        #else
+            .init(string: "http://server:8083")!
+                .appendingPathComponent(Request.path)
+        #endif
     }
 }

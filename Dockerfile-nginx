@@ -1,0 +1,18 @@
+# Dockerfile.nginx
+
+# Use the official Nginx image with version 1.28.0 as a base
+FROM nginx:1.28.0
+
+# Copy the custom Nginx configuration file into the container
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Create a directory for SSL certificates inside the container
+# This directory will be mounted with the host's SSL certificate files
+RUN mkdir -p /etc/nginx/ssl
+
+# Expose the ports Nginx will listen on
+EXPOSE 443
+EXPOSE 8081
+
+# The default Nginx CMD will start Nginx
+CMD ["nginx", "-g", "daemon off;"]

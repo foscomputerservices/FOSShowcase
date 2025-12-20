@@ -1,6 +1,5 @@
 // LandingPage.swift
 //
-// Created by David Hunt on 9/10/24
 // Copyright 2024 FOS Computer Services, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the  License);
@@ -21,7 +20,7 @@ import Foundation
 import Ignite
 import ViewModels
 
-struct LandingPage: StaticLayout {
+struct LandingPage: StaticPage {
     var title: String {
         // REVIEWED dgh: Not being localized is considered an internal error
         // swiftlint:disable:next force_try

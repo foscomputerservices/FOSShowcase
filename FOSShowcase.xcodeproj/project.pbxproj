@@ -19,16 +19,12 @@
 		632162B02C8F3F6F002B991F /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 632162AF2C8F3F6F002B991F /* FOSTesting */; };
 		6347AEF42C93CD410052EA04 /* FOSWatchShowcase Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6347AEF32C93CD410052EA04 /* FOSWatchShowcase Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6347AF342C93D1090052EA04 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */; };
-		6347AF352C93D1090052EA04 /* LandingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AEA2C8F6FC10086BAC5 /* LandingPageViewModel.swift */; };
-		6347AF362C93D1090052EA04 /* LandingPageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE92C8F6FC10086BAC5 /* LandingPageRequest.swift */; };
 		634A5EEB2D278EA500E91622 /* SystemVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634A5EEA2D278EA500E91622 /* SystemVersion.swift */; };
 		634A5EEC2D278EA500E91622 /* SystemVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634A5EEA2D278EA500E91622 /* SystemVersion.swift */; };
 		634A5EEF2D28CABB00E91622 /* FOSFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 634A5EEE2D28CABB00E91622 /* FOSFoundation */; };
 		634A5EF12D28CABB00E91622 /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 634A5EF02D28CABB00E91622 /* FOSMVVM */; };
 		634A5EF32D28CABB00E91622 /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 634A5EF22D28CABB00E91622 /* FOSTesting */; };
-		635E7AEC2C8F6FC10086BAC5 /* LandingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AEA2C8F6FC10086BAC5 /* LandingPageViewModel.swift */; };
 		635E7AED2C8F6FC10086BAC5 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */; };
-		635E7AEE2C8F6FC10086BAC5 /* LandingPageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE92C8F6FC10086BAC5 /* LandingPageRequest.swift */; };
 		639D68AF2C92A513003C0601 /* FOSFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 639D68AE2C92A513003C0601 /* FOSFoundation */; };
 		639D68B12C92A513003C0601 /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 639D68B02C92A513003C0601 /* FOSMVVM */; };
 		639D68B32C92A513003C0601 /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 639D68B22C92A513003C0601 /* FOSTesting */; };
@@ -106,8 +102,6 @@
 		6347AF0F2C93CD420052EA04 /* FOSWatchShowcase Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FOSWatchShowcase Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		634A5EEA2D278EA500E91622 /* SystemVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemVersion.swift; sourceTree = "<group>"; };
 		635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
-		635E7AE92C8F6FC10086BAC5 /* LandingPageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageRequest.swift; sourceTree = "<group>"; };
-		635E7AEA2C8F6FC10086BAC5 /* LandingPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -168,6 +162,11 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			name = "Watch AppUITests";
 			path = "Tests/Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		63BF78112DE506C500A2508E /* LandingPage */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LandingPage;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -275,8 +274,7 @@
 		635E7AEB2C8F6FC10086BAC5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				635E7AE92C8F6FC10086BAC5 /* LandingPageRequest.swift */,
-				635E7AEA2C8F6FC10086BAC5 /* LandingPageViewModel.swift */,
+				63BF78112DE506C500A2508E /* LandingPage */,
 				634A5EEA2D278EA500E91622 /* SystemVersion.swift */,
 			);
 			name = ViewModels;
@@ -301,6 +299,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				630FAAE22C8B76D30046A1FF /* FOSShowcase */,
+				63BF78112DE506C500A2508E /* LandingPage */,
 			);
 			name = FOSShowcase;
 			packageProductDependencies = (
@@ -402,6 +401,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				63BF78112DE506C500A2508E /* LandingPage */,
+			);
 			name = "FOSWatchShowcase Watch App";
 			packageProductDependencies = (
 			);
@@ -457,7 +459,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					630FAADF2C8B76D30046A1FF = {
 						CreatedOnToolsVersion = 16.0;
@@ -491,6 +493,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 630FAAD72C8B76D30046A1FF;
 			minimizedProjectReferenceProxies = 1;
@@ -571,10 +574,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				635E7AEC2C8F6FC10086BAC5 /* LandingPageViewModel.swift in Sources */,
 				635E7AED2C8F6FC10086BAC5 /* LandingPageView.swift in Sources */,
 				634A5EEB2D278EA500E91622 /* SystemVersion.swift in Sources */,
-				635E7AEE2C8F6FC10086BAC5 /* LandingPageRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,9 +598,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6347AF342C93D1090052EA04 /* LandingPageView.swift in Sources */,
-				6347AF352C93D1090052EA04 /* LandingPageViewModel.swift in Sources */,
 				634A5EEC2D278EA500E91622 /* SystemVersion.swift in Sources */,
-				6347AF362C93D1090052EA04 /* LandingPageRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,7 +681,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = J9VR68AE7U;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -750,7 +751,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = J9VR68AE7U;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -787,8 +790,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SwiftUIApp/Preview Content\"";
-				DEVELOPMENT_TEAM = J9VR68AE7U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -828,8 +831,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SwiftUIApp/Preview Content\"";
-				DEVELOPMENT_TEAM = J9VR68AE7U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -863,7 +866,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J9VR68AE7U;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
@@ -881,7 +884,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J9VR68AE7U;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
@@ -899,7 +902,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J9VR68AE7U;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				MARKETING_VERSION = 1.0;
@@ -916,7 +919,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J9VR68AE7U;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				MARKETING_VERSION = 1.0;
@@ -936,7 +939,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = J9VR68AE7U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = FOSWatchShowcase;
@@ -967,7 +969,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = J9VR68AE7U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = FOSWatchShowcase;
@@ -996,7 +997,6 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J9VR68AE7U;
 				INFOPLIST_KEY_CFBundleDisplayName = FOSWatchShowcase;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSWatchShowcase;
@@ -1011,7 +1011,6 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J9VR68AE7U;
 				INFOPLIST_KEY_CFBundleDisplayName = FOSWatchShowcase;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.foscomputerservices.FOSWatchShowcase;
@@ -1028,7 +1027,6 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J9VR68AE7U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				MARKETING_VERSION = 1.0;
@@ -1049,7 +1047,6 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J9VR68AE7U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				MARKETING_VERSION = 1.0;
@@ -1070,7 +1067,6 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J9VR68AE7U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				MARKETING_VERSION = 1.0;
@@ -1090,7 +1086,6 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J9VR68AE7U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				MARKETING_VERSION = 1.0;
