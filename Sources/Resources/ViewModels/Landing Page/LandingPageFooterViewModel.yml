@@ -13,3 +13,67 @@ en:
     quickLink3Text: "Services"
     quickLink4Text: "Contact"
     copyrightText: "© 2025 FOS Computer Services, LLC.  All rights reserved."
+
+fr:
+  LandingPageFooterViewModel:
+    companyTitle: "FOS Computer Services, LLC"
+    aboutSubtitle: "Développement expert d'applications iOS et macOS avec des solutions backend robustes pour les entreprises qui exigent l'excellence."
+    servicesTitle: "Services"
+    service1Text: "Développement iOS"
+    service2Text: "Développement macOS"
+    service3Text: "Services backend"
+    service4Text: "Développement d'API"
+    quickLinksTitle: "Liens rapides"
+    quickLink1Text: "Accueil"
+    quickLink2Text: "À propos"
+    quickLink3Text: "Services"
+    quickLink4Text: "Contact"
+    copyrightText: "© 2025 FOS Computer Services, LLC. Tous droits réservés."
+
+es:
+  LandingPageFooterViewModel:
+    companyTitle: "FOS Computer Services, LLC"
+    aboutSubtitle: "Desarrollo experto de aplicaciones iOS y macOS con soluciones backend robustas para empresas que exigen excelencia."
+    servicesTitle: "Servicios"
+    service1Text: "Desarrollo iOS"
+    service2Text: "Desarrollo macOS"
+    service3Text: "Servicios backend"
+    service4Text: "Desarrollo de API"
+    quickLinksTitle: "Enlaces rápidos"
+    quickLink1Text: "Inicio"
+    quickLink2Text: "Acerca de"
+    quickLink3Text: "Servicios"
+    quickLink4Text: "Contacto"
+    copyrightText: "© 2025 FOS Computer Services, LLC. Todos los derechos reservados."
+
+it:
+  LandingPageFooterViewModel:
+    companyTitle: "FOS Computer Services, LLC"
+    aboutSubtitle: "Sviluppo esperto di applicazioni iOS e macOS con soluzioni backend robuste per aziende che richiedono l'eccellenza."
+    servicesTitle: "Servizi"
+    service1Text: "Sviluppo iOS"
+    service2Text: "Sviluppo macOS"
+    service3Text: "Servizi backend"
+    service4Text: "Sviluppo API"
+    quickLinksTitle: "Link rapidi"
+    quickLink1Text: "Home"
+    quickLink2Text: "Chi siamo"
+    quickLink3Text: "Servizi"
+    quickLink4Text: "Contatti"
+    copyrightText: "© 2025 FOS Computer Services, LLC. Tutti i diritti riservati."
+
+tr:
+  LandingPageFooterViewModel:
+    companyTitle: "FOS Computer Services, LLC"
+    aboutSubtitle: "Mükemmellik talep eden işletmeler için sağlam backend çözümleri ile uzman iOS ve macOS uygulama geliştirme."
+    servicesTitle: "Hizmetler"
+    service1Text: "iOS Geliştirme"
+    service2Text: "macOS Geliştirme"
+    service3Text: "Backend Hizmetleri"
+    service4Text: "API Geliştirme"
+    quickLinksTitle: "Hızlı Bağlantılar"
+    quickLink1Text: "Ana Sayfa"
+    quickLink2Text: "Hakkımızda"
+    quickLink3Text: "Hizmetler"
+    quickLink4Text: "İletişim"
+    copyrightText: "© 2025 FOS Computer Services, LLC. Tüm hakları saklıdır."
