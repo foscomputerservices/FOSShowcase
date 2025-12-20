@@ -9,3 +9,6 @@ DerivedData/
 /.build 2
 .docker-compose.yml.swp
 ssl
+ssl.zip
+*.tmp
+session-state-*.json
