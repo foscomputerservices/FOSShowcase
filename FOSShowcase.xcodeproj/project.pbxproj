@@ -18,13 +18,11 @@
 		632162AE2C8F3F6F002B991F /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 632162AD2C8F3F6F002B991F /* FOSMVVM */; };
 		632162B02C8F3F6F002B991F /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 632162AF2C8F3F6F002B991F /* FOSTesting */; };
 		6347AEF42C93CD410052EA04 /* FOSWatchShowcase Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6347AEF32C93CD410052EA04 /* FOSWatchShowcase Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		6347AF342C93D1090052EA04 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */; };
 		634A5EEB2D278EA500E91622 /* SystemVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634A5EEA2D278EA500E91622 /* SystemVersion.swift */; };
 		634A5EEC2D278EA500E91622 /* SystemVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634A5EEA2D278EA500E91622 /* SystemVersion.swift */; };
 		634A5EEF2D28CABB00E91622 /* FOSFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 634A5EEE2D28CABB00E91622 /* FOSFoundation */; };
 		634A5EF12D28CABB00E91622 /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 634A5EF02D28CABB00E91622 /* FOSMVVM */; };
 		634A5EF32D28CABB00E91622 /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 634A5EF22D28CABB00E91622 /* FOSTesting */; };
-		635E7AED2C8F6FC10086BAC5 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */; };
 		639D68AF2C92A513003C0601 /* FOSFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 639D68AE2C92A513003C0601 /* FOSFoundation */; };
 		639D68B12C92A513003C0601 /* FOSMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 639D68B02C92A513003C0601 /* FOSMVVM */; };
 		639D68B32C92A513003C0601 /* FOSTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 639D68B22C92A513003C0601 /* FOSTesting */; };
@@ -101,7 +99,6 @@
 		6347AF052C93CD420052EA04 /* FOSWatchShowcase Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FOSWatchShowcase Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6347AF0F2C93CD420052EA04 /* FOSWatchShowcase Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FOSWatchShowcase Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		634A5EEA2D278EA500E91622 /* SystemVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemVersion.swift; sourceTree = "<group>"; };
-		635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -162,6 +159,12 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			name = "Watch AppUITests";
 			path = "Tests/Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		6391D2612E16E8A60075636B /* SwiftUIViews */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			name = SwiftUIViews;
+			path = Sources/SwiftUIViews;
 			sourceTree = "<group>";
 		};
 		63BF78112DE506C500A2508E /* LandingPage */ = {
@@ -236,7 +239,7 @@
 		630FAAD72C8B76D30046A1FF = {
 			isa = PBXGroup;
 			children = (
-				635E7AE82C8F6FC10086BAC5 /* SwiftUIViews */,
+				6391D2612E16E8A60075636B /* SwiftUIViews */,
 				635E7AEB2C8F6FC10086BAC5 /* ViewModels */,
 				630FAAE22C8B76D30046A1FF /* FOSShowcase */,
 				630FAAF42C8B76D50046A1FF /* FOSShowcaseTests */,
@@ -260,15 +263,6 @@
 				6347AF0F2C93CD420052EA04 /* FOSWatchShowcase Watch AppUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		635E7AE82C8F6FC10086BAC5 /* SwiftUIViews */ = {
-			isa = PBXGroup;
-			children = (
-				635E7AE72C8F6FC10086BAC5 /* LandingPageView.swift */,
-			);
-			name = SwiftUIViews;
-			path = Sources/SwiftUIViews;
 			sourceTree = "<group>";
 		};
 		635E7AEB2C8F6FC10086BAC5 /* ViewModels */ = {
@@ -299,6 +293,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				630FAAE22C8B76D30046A1FF /* FOSShowcase */,
+				6391D2612E16E8A60075636B /* SwiftUIViews */,
 				63BF78112DE506C500A2508E /* LandingPage */,
 			);
 			name = FOSShowcase;
@@ -402,6 +397,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				6391D2612E16E8A60075636B /* SwiftUIViews */,
 				63BF78112DE506C500A2508E /* LandingPage */,
 			);
 			name = "FOSWatchShowcase Watch App";
@@ -574,7 +570,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				635E7AED2C8F6FC10086BAC5 /* LandingPageView.swift in Sources */,
 				634A5EEB2D278EA500E91622 /* SystemVersion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,7 +592,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6347AF342C93D1090052EA04 /* LandingPageView.swift in Sources */,
 				634A5EEC2D278EA500E91622 /* SystemVersion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

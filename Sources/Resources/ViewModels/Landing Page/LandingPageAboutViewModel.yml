@@ -9,3 +9,51 @@ en:
     fact4: "Backend development with Vapor and Swift"
     fact5: "Seamless integration between mobile apps and cloud services"
     fact6: "Continuous support and maintenance services"
+
+fr:
+  LandingPageAboutViewModel:
+    title: "À propos de notre entreprise"
+    subtitle1: "Fondée par David Hunt, un développeur de logiciels avec plus de 36 ans d'expérience en développement logiciel, notre cabinet de conseil se spécialise dans la création d'applications iOS et macOS de haute qualité avec des solutions backend évolutives. Nous travaillons en étroite collaboration avec des entreprises de toutes tailles pour fournir des logiciels qui dépassent les attentes."
+    subtitle2: "Notre équipe apporte une expertise technique approfondie et une passion pour la création d'expériences numériques exceptionnelles qui aident nos clients à atteindre leurs objectifs commerciaux."
+    fact1: "Plus de 15 ans d'expérience en développement iOS et macOS"
+    fact2: "Expertise en Swift, SwiftUI et Vapor"
+    fact3: "Nous adoptons le processus de développement piloté par les tests (TDD)"
+    fact4: "Développement backend avec Vapor et Swift"
+    fact5: "Intégration transparente entre applications mobiles et services cloud"
+    fact6: "Services de support et de maintenance continus"
+
+es:
+  LandingPageAboutViewModel:
+    title: "Acerca de nuestra empresa"
+    subtitle1: "Fundada por David Hunt, un desarrollador de software con más de 36 años de experiencia en desarrollo de software, nuestra firma consultora se especializa en crear aplicaciones iOS y macOS de alta calidad con soluciones backend escalables. Trabajamos estrechamente con empresas de todos los tamaños para entregar software que supera las expectativas."
+    subtitle2: "Nuestro equipo aporta profunda experiencia técnica y pasión por crear experiencias digitales excepcionales que ayudan a nuestros clientes a alcanzar sus objetivos comerciales."
+    fact1: "Más de 15 años de experiencia en desarrollo iOS y macOS"
+    fact2: "Experiencia en Swift, SwiftUI y Vapor"
+    fact3: "Adoptamos el proceso de Desarrollo Dirigido por Pruebas (TDD)"
+    fact4: "Desarrollo backend con Vapor y Swift"
+    fact5: "Integración perfecta entre aplicaciones móviles y servicios en la nube"
+    fact6: "Servicios continuos de soporte y mantenimiento"
+
+it:
+  LandingPageAboutViewModel:
+    title: "Chi siamo"
+    subtitle1: "Fondata da David Hunt, uno sviluppatore software con oltre 36 anni di esperienza nello sviluppo software, la nostra società di consulenza è specializzata nella creazione di applicazioni iOS e macOS di alta qualità con soluzioni backend scalabili. Lavoriamo a stretto contatto con aziende di tutte le dimensioni per fornire software che supera le aspettative."
+    subtitle2: "Il nostro team apporta una profonda competenza tecnica e passione per la creazione di esperienze digitali eccezionali che aiutano i nostri clienti a raggiungere i loro obiettivi aziendali."
+    fact1: "Oltre 15 anni di esperienza nello sviluppo iOS e macOS"
+    fact2: "Competenza in Swift, SwiftUI e Vapor"
+    fact3: "Abbracciamo il processo di Test-Driven Development (TDD)"
+    fact4: "Sviluppo backend con Vapor e Swift"
+    fact5: "Integrazione perfetta tra app mobili e servizi cloud"
+    fact6: "Servizi continuativi di supporto e manutenzione"
+
+tr:
+  LandingPageAboutViewModel:
+    title: "Hakkımızda"
+    subtitle1: "36 yılı aşkın yazılım geliştirme deneyimine sahip bir yazılım geliştiricisi olan David Hunt tarafından kurulan danışmanlık firmamız, ölçeklenebilir backend çözümleri ile yüksek kaliteli iOS ve macOS uygulamaları geliştirme konusunda uzmanlaşmıştır. Beklentileri aşan yazılımlar sunmak için her büyüklükteki işletmeyle yakın çalışıyoruz."
+    subtitle2: "Ekibimiz, müşterilerimizin iş hedeflerine ulaşmalarına yardımcı olan olağanüstü dijital deneyimler yaratma konusunda derin teknik uzmanlık ve tutku sunuyor."
+    fact1: "15+ yıl iOS ve macOS geliştirme deneyimi"
+    fact2: "Swift, SwiftUI ve Vapor uzmanlığı"
+    fact3: "Test Odaklı Geliştirme (TDD) sürecini benimsiyoruz"
+    fact4: "Vapor ve Swift ile backend geliştirme"
+    fact5: "Mobil uygulamalar ve bulut hizmetleri arasında kusursuz entegrasyon"
+    fact6: "Sürekli destek ve bakım hizmetleri"

@@ -35,7 +35,6 @@ services:
 
   client:
     image: foscompsvcs/fos-showcase-client:latest
-    platform: linux/amd64
     build:
       context: .
       dockerfile: Dockerfile-client
@@ -51,7 +50,6 @@ services:
 
   server:
     image: foscompsvcs/fos-showcase-server:latest
-    platform: linux/amd64
     build:
       context: .
       dockerfile: Dockerfile-server
