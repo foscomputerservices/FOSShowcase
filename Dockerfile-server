@@ -2,7 +2,7 @@
 # Build image
 # ================================
 
-FROM swift:6.0.3-noble AS build
+FROM swift:6.1.0-noble AS build
 
 # Install OS updates
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
@@ -28,7 +28,8 @@ COPY . .
 # N.B.: The static version of jemalloc is incompatible with the static Swift runtime.
 RUN swift build -c release \
                 --static-swift-stdlib \
-                -Xlinker -ljemalloc
+                -Xlinker -ljemalloc \
+                --product VaporWebServer
 
 # Switch to the staging area
 WORKDIR /staging
@@ -50,7 +51,7 @@ RUN [ -d /build/Resources ] && { mv /build/Resources ./Resources && chmod -R a-w
 # ================================
 # Run image
 # ================================
-FROM ubuntu:jammy
+FROM ubuntu:noble
 
 # Make sure all system packages are up to date, and install only essential packages.
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
@@ -60,8 +61,9 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
       libjemalloc2 \
       ca-certificates \
       tzdata \
-# If your app or its dependencies import FoundationNetworking, also install `libcurl4`.
       libcurl4 \
+      # Install PostgreSQL client development files for Swift Vapor
+      libpq-dev \
 # If your app or its dependencies import FoundationXML, also install `libxml2`.
       # libxml2 \
     && rm -r /var/lib/apt/lists/*
@@ -81,9 +83,9 @@ ENV SWIFT_BACKTRACE=enable=yes,sanitize=yes,threads=all,images=all,interactive=n
 # Ensure all further commands run as the vapor user
 USER vapor:vapor
 
-# Let Docker bind to port 8080
-EXPOSE 8080
+# Let Docker bind to the new internal port 8083
+EXPOSE 8083
 
-# Start the Vapor service when the image is run, default to listening on 8080 in production environment
+# Start the Vapor service when the image is run, default to listening on 8083 in production environment
 ENTRYPOINT ["./VaporWebServer"]
-CMD ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
+CMD ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8083"]

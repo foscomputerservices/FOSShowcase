@@ -1,6 +1,5 @@
 // LandingPageViewModel+Factory.swift
 //
-// Created by David Hunt on 9/10/24
 // Copyright 2024 FOS Computer Services, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the  License);
@@ -17,6 +16,7 @@
 
 import FOSFoundation
 import FOSMVVM
+import FOSMVVMVapor
 import Foundation
 import Vapor
 import ViewModels

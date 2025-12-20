@@ -1,6 +1,5 @@
 // LandingPageViewModel.swift
 //
-// Created by David Hunt on 9/10/24
 // Copyright 2024 FOS Computer Services, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the  License);
@@ -19,15 +18,26 @@ import FOSFoundation
 import FOSMVVM
 import Foundation
 
+@ViewModel
 public struct LandingPageViewModel: RequestableViewModel {
     public typealias Request = LandingPageRequest
 
     @LocalizedString public var loadingTitle
     @LocalizedString public var pageTitle
 
+    public let banner: LandingPageBannerViewModel
+    public let services: LandingPageServicesViewModel
+    public let about: LandingPageAboutViewModel
+    public let footer: LandingPageFooterViewModel
+
     public var vmId = ViewModelId()
 
-    public init() {}
+    public init() {
+        self.banner = .init()
+        self.services = .init()
+        self.about = .init()
+        self.footer = .init()
+    }
 }
 
 public extension LandingPageViewModel {

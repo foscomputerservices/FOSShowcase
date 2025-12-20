@@ -1,6 +1,5 @@
 // routes.swift
 //
-// Created by David Hunt on 9/10/24
 // Copyright 2024 FOS Computer Services, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the  License);
@@ -23,10 +22,6 @@ import ViewModels
 func routes(_ app: Application) throws {
     app.get { _ async in
         "It works!"
-    }
-
-    app.get("hello") { _ async -> String in
-        "Hello, world!"
     }
 
     let unauthGroup = app.routes

@@ -1,6 +1,5 @@
 // configure.swift
 //
-// Created by David Hunt on 9/10/24
 // Copyright 2024 FOS Computer Services, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the  License);
@@ -30,8 +29,8 @@ public func configure(_ app: Application) async throws {
         resourceDirectoryName: "Resources"
     )
 
-    // uncomment to serve files from /Public folder
-    // app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
+    app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
+
     // register routes
     try routes(app)
 }

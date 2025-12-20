@@ -1,6 +1,5 @@
 // FOSShowcaseApp.swift
 //
-// Created by David Hunt on 9/10/24
 // Copyright 2024 FOS Computer Services, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the  License);
@@ -22,25 +21,19 @@ import SwiftUI
 
 @main
 struct FOSShowcaseApp: App {
-    @State var viewModel: LandingPageViewModel?
-
     var body: some Scene {
         WindowGroup {
-            let vmBinding = $viewModel
-
-            LandingPageView.bind(
-                viewModel: vmBinding
-            )
-            .environment(
-                MVVMEnvironment(
-                    appBundle: Bundle.main,
-                    deploymentURLs: [
-                        .production: URL(string: "https://api.foscomputerservices.com")!,
-                        .staging: URL(string: "https://staging.foscomputerservices.com")!,
-                        .debug: URL(string: "http://localhost:8080")!
-                    ]
+            LandingPageView.bind()
+                .environment(
+                    MVVMEnvironment(
+                        appBundle: Bundle.main,
+                        deploymentURLs: [
+                            .production: URL(string: "https://api.foscomputerservices.com")!,
+                            .staging: URL(string: "https://staging.foscomputerservices.com")!,
+                            .debug: URL(string: "http://localhost:8080")!
+                        ]
+                    )
                 )
-            )
         }
     }
 }

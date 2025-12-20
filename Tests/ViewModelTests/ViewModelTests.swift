@@ -1,6 +1,5 @@
-// LandingPageViewModelTests.swift
+// ViewModelTests.swift
 //
-// Created by David Hunt on 9/10/24
 // Copyright 2024 FOS Computer Services, LLC
 //
 // Licensed under the Apache License, Version 2.0 (the  License);
@@ -22,10 +21,14 @@ import Foundation
 import Testing
 import ViewModels
 
-@Suite("Landing Page ViewModel Tests")
-struct LandingPageViewModelTests: LocalizableTestCase {
-    @Test func structure() throws {
-        try expectTranslations(viewModel: LandingPageViewModel.self)
+@Suite("ViewModel Tests")
+struct ViewModelTests: LocalizableTestCase {
+    @Test func structure() async throws {
+        try await expectFullViewModelTests(LandingPageViewModel.self)
+        try await expectFullViewModelTests(LandingPageBannerViewModel.self)
+        try await expectFullViewModelTests(LandingPageServicesViewModel.self)
+        try await expectFullViewModelTests(LandingPageAboutViewModel.self)
+        try await expectFullViewModelTests(LandingPageFooterViewModel.self)
     }
 
     let locStore: LocalizationStore
