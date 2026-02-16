@@ -25,6 +25,32 @@
             "preLaunchTask": "swift: Build Release App"
         },
         {
+            "type": "swift",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Debug VaporWebServer",
+            "preLaunchTask": "swift: Build Debug VaporWebServer",
+            "target": "VaporWebServer",
+            "configuration": "debug"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:FOSShowcase}",
+            "name": "Release VaporWebServer",
+            "preLaunchTask": "swift: Build Release VaporWebServer",
+            "target": "VaporWebServer",
+            "configuration": "release"
+        },
+        {
             "type": "lldb",
             "request": "launch",
             "sourceLanguages": [
@@ -49,31 +75,7 @@
             "preLaunchTask": "swift: Build Release VaporWebServer"
         },
         {
-            "type": "lldb",
-            "request": "launch",
-            "sourceLanguages": [
-                "swift"
-            ],
-            "args": [],
-            "cwd": "${workspaceFolder:FOSShowcase}",
-            "name": "Debug VaporWebServer",
-            "program": "${workspaceFolder:FOSShowcase}/.build/debug/VaporWebServer",
-            "preLaunchTask": "swift: Build Debug VaporWebServer"
-        },
-        {
-            "type": "lldb",
-            "request": "launch",
-            "sourceLanguages": [
-                "swift"
-            ],
-            "args": [],
-            "cwd": "${workspaceFolder:FOSShowcase}",
-            "name": "Release VaporWebServer",
-            "program": "${workspaceFolder:FOSShowcase}/.build/release/VaporWebServer",
-            "preLaunchTask": "swift: Build Release VaporWebServer"
-        },
-        {
-            "type": "lldb",
+            "type": "swift",
             "request": "launch",
             "sourceLanguages": [
                 "swift"
@@ -81,11 +83,12 @@
             "args": [],
             "cwd": "${workspaceFolder:FOSShowcase}",
             "name": "Debug IgniteWebApp",
-            "program": "${workspaceFolder:FOSShowcase}/.build/debug/IgniteWebApp",
-            "preLaunchTask": "swift: Build Debug IgniteWebApp"
+            "preLaunchTask": "swift: Build Debug IgniteWebApp",
+            "target": "IgniteWebApp",
+            "configuration": "debug"
         },
         {
-            "type": "lldb",
+            "type": "swift",
             "request": "launch",
             "sourceLanguages": [
                 "swift"
@@ -93,8 +96,9 @@
             "args": [],
             "cwd": "${workspaceFolder:FOSShowcase}",
             "name": "Release IgniteWebApp",
-            "program": "${workspaceFolder:FOSShowcase}/.build/release/IgniteWebApp",
-            "preLaunchTask": "swift: Build Release IgniteWebApp"
+            "preLaunchTask": "swift: Build Release IgniteWebApp",
+            "target": "IgniteWebApp",
+            "configuration": "release"
         },
         {
             "type": "lldb",
@@ -121,7 +125,7 @@
             "preLaunchTask": "swift: Build Release FOSShowcase_WebServer"
         },
         {
-            "type": "lldb",
+            "type": "swift",
             "request": "launch",
             "sourceLanguages": [
                 "swift"
@@ -129,11 +133,12 @@
             "args": [],
             "cwd": "${workspaceFolder:FOSShowcase}",
             "name": "Debug VaporLeafWebApp",
-            "program": "${workspaceFolder:FOSShowcase}/.build/debug/VaporLeafWebApp",
-            "preLaunchTask": "swift: Build Debug VaporLeafWebApp"
+            "preLaunchTask": "swift: Build Debug VaporLeafWebApp",
+            "target": "VaporLeafWebApp",
+            "configuration": "debug"
         },
         {
-            "type": "lldb",
+            "type": "swift",
             "request": "launch",
             "sourceLanguages": [
                 "swift"
@@ -141,8 +146,9 @@
             "args": [],
             "cwd": "${workspaceFolder:FOSShowcase}",
             "name": "Release VaporLeafWebApp",
-            "program": "${workspaceFolder:FOSShowcase}/.build/release/VaporLeafWebApp",
-            "preLaunchTask": "swift: Build Release VaporLeafWebApp"
+            "preLaunchTask": "swift: Build Release VaporLeafWebApp",
+            "target": "VaporLeafWebApp",
+            "configuration": "release"
         },
         {
             "type": "lldb",
