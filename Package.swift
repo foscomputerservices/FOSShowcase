@@ -23,15 +23,15 @@ let package = Package(
     ],
     dependencies: [
         // 🍎 frameworks
-        .package(url: "https://github.com/swiftlang/swift-testing.git", revision: "43b6f88e2f2712e0f2a97e6acc75b55f22234299"),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
-        // .package(url: "https://github.com/apple/swift-nio.git", from: "2.65.0"),
 
         // FOS frameworks
         .package(url: "https://github.com/foscomputerservices/FOSUtilities.git", branch: "main"),
         // .package(path: "../FOSUtilities"),
 
         // Third 🥳 frameworks
+        .package(url: "https://github.com/vapor/fluent.git", from: "4.12.0"),
+        .package(url: "https://github.com/vapor/fluent-postgres-driver.git", from: "2.10.0"),
         .package(url: "https://github.com/vapor/vapor.git", .upToNextMajor(from: "4.102.0")),
         .package(url: "https://github.com/vapor/leaf.git", from: "4.4.0"),
         .package(url: "https://github.com/twostraws/Ignite.git", branch: "main"),
@@ -52,6 +52,8 @@ let package = Package(
             dependencies: [
                 .byName(name: "ViewModels"),
                 .product(name: "Vapor", package: "vapor"),
+                .product(name: "Fluent", package: "fluent"),
+                .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver"),
                 .product(name: "FOSFoundation", package: "FOSUtilities"),
                 .product(name: "FOSMVVM", package: "FOSUtilities"),
                 .product(name: "FOSMVVMVapor", package: "FOSUtilities")
@@ -99,7 +101,6 @@ let package = Package(
             dependencies: [
                 .target(name: "ViewModels"),
                 .product(name: "Vapor", package: "Vapor"),
-                .product(name: "Testing", package: "swift-testing"),
                 .product(name: "FOSFoundation", package: "FOSUtilities"),
                 .product(name: "FOSMVVM", package: "FOSUtilities"),
                 .product(name: "FOSTesting", package: "FOSUtilities")
@@ -114,7 +115,6 @@ let package = Package(
             dependencies: [
                 .target(name: "WebServer"),
                 .product(name: "Vapor", package: "Vapor"),
-                .product(name: "Testing", package: "swift-testing")
             ],
             swiftSettings: swiftSettings
         )

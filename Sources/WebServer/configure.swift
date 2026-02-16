@@ -14,6 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import Fluent
+import FluentPostgresDriver
 import FOSFoundation
 import FOSMVVM
 import Foundation
@@ -30,6 +32,23 @@ public func configure(_ app: Application) async throws {
     )
 
     app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
+
+    // PostgreSQL via SSH tunnel (host.docker.internal -> Pi host -> fos-openclaw)
+    let pgConfig = SQLPostgresConfiguration(
+        coreConfiguration: .init(
+            host: Environment.get("DATABASE_HOST") ?? "host.docker.internal",
+            port: Environment.get("DATABASE_PORT").flatMap(Int.init) ?? 5432,
+            username: Environment.get("DATABASE_USER") ?? "openclaw_webhook",
+            password: Environment.get("DATABASE_PASSWORD") ?? "",
+            database: Environment.get("DATABASE_NAME") ?? "foscs",
+            tls: .disable
+        ),
+        searchPath: ["webhook", "public"]
+    )
+    app.databases.use(.postgres(configuration: pgConfig), as: .psql)
+
+    app.migrations.add(CreateTVAlert())
+    try await app.autoMigrate()
 
     // register routes
     try routes(app)

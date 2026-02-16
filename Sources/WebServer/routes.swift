@@ -14,6 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import Fluent
 import FOSFoundation
 import FOSMVVM
 import Vapor
@@ -26,4 +27,6 @@ func routes(_ app: Application) throws {
 
     let unauthGroup = app.routes
     try unauthGroup.register(viewModel: LandingPageViewModel.self)
+
+    try app.register(collection: WebhookController())
 }
