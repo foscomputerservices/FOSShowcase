@@ -8,3 +8,47 @@ en:
     service2Description: "Professional desktop applications for macOS that leverage the full power of Apple's ecosystem."
     service3Title: "Backend Development"
     service3Description: "Scalable and secure backend services that support your applications with reliable API endpoints and data management."
+
+fr:
+  LandingPageServicesViewModel:
+    title: "Nos services"
+    subtitle: "Nous nous spécialisons dans la création d'expériences fluides sur les plateformes Apple et des solutions backend robustes."
+    service1Title: "Développement d'applications iOS"
+    service1Description: "Applications iOS natives construites avec Swift et SwiftUI qui offrent des expériences utilisateur et des performances exceptionnelles."
+    service2Title: "Développement d'applications macOS"
+    service2Description: "Applications de bureau professionnelles pour macOS qui exploitent toute la puissance de l'écosystème Apple."
+    service3Title: "Développement backend"
+    service3Description: "Services backend évolutifs et sécurisés qui prennent en charge vos applications avec des points de terminaison API fiables et une gestion des données."
+
+es:
+  LandingPageServicesViewModel:
+    title: "Nuestros servicios"
+    subtitle: "Nos especializamos en crear experiencias fluidas en las plataformas Apple y soluciones backend robustas."
+    service1Title: "Desarrollo de aplicaciones iOS"
+    service1Description: "Aplicaciones iOS nativas construidas con Swift y SwiftUI que ofrecen experiencias de usuario y rendimiento excepcionales."
+    service2Title: "Desarrollo de aplicaciones macOS"
+    service2Description: "Aplicaciones de escritorio profesionales para macOS que aprovechan todo el poder del ecosistema Apple."
+    service3Title: "Desarrollo backend"
+    service3Description: "Servicios backend escalables y seguros que soportan sus aplicaciones con endpoints API confiables y gestión de datos."
+
+it:
+  LandingPageServicesViewModel:
+    title: "I nostri servizi"
+    subtitle: "Siamo specializzati nella creazione di esperienze fluide sulle piattaforme Apple e soluzioni backend robuste."
+    service1Title: "Sviluppo app iOS"
+    service1Description: "Applicazioni iOS native create con Swift e SwiftUI che offrono esperienze utente e prestazioni eccezionali."
+    service2Title: "Sviluppo app macOS"
+    service2Description: "Applicazioni desktop professionali per macOS che sfruttano tutta la potenza dell'ecosistema Apple."
+    service3Title: "Sviluppo backend"
+    service3Description: "Servizi backend scalabili e sicuri che supportano le tue applicazioni con endpoint API affidabili e gestione dei dati."
+
+tr:
+  LandingPageServicesViewModel:
+    title: "Hizmetlerimiz"
+    subtitle: "Apple platformlarında kusursuz deneyimler ve sağlam backend çözümleri oluşturma konusunda uzmanız."
+    service1Title: "iOS Uygulama Geliştirme"
+    service1Description: "Swift ve SwiftUI ile oluşturulmuş, olağanüstü kullanıcı deneyimi ve performans sunan yerel iOS uygulamaları."
+    service2Title: "macOS Uygulama Geliştirme"
+    service2Description: "Apple ekosisteminin tüm gücünden yararlanan profesyonel macOS masaüstü uygulamaları."
+    service3Title: "Backend Geliştirme"
+    service3Description: "Güvenilir API uç noktaları ve veri yönetimi ile uygulamalarınızı destekleyen ölçeklenebilir ve güvenli backend hizmetleri."

@@ -5,3 +5,35 @@ en:
     titlePart3: "experiences"
     subtitle: "We craft premium native applications and robust backend services for businesses that demand excellence."
     getStartedButtonTitle: "Get Started"
+
+fr:
+  LandingPageBannerViewModel:
+    titlePart1: "Créer des expériences"
+    titlePart2: "iOS & macOS"
+    titlePart3: "exceptionnelles"
+    subtitle: "Nous créons des applications natives premium et des services backend robustes pour les entreprises qui exigent l'excellence."
+    getStartedButtonTitle: "Commencer"
+
+es:
+  LandingPageBannerViewModel:
+    titlePart1: "Construyendo experiencias"
+    titlePart2: "iOS & macOS"
+    titlePart3: "excepcionales"
+    subtitle: "Creamos aplicaciones nativas premium y servicios backend robustos para empresas que exigen excelencia."
+    getStartedButtonTitle: "Comenzar"
+
+it:
+  LandingPageBannerViewModel:
+    titlePart1: "Creare esperienze"
+    titlePart2: "iOS & macOS"
+    titlePart3: "eccezionali"
+    subtitle: "Realizziamo applicazioni native premium e servizi backend robusti per aziende che richiedono l'eccellenza."
+    getStartedButtonTitle: "Inizia"
+
+tr:
+  LandingPageBannerViewModel:
+    titlePart1: "Olağanüstü"
+    titlePart2: "iOS & macOS"
+    titlePart3: "deneyimleri yaratıyoruz"
+    subtitle: "Mükemmellik talep eden işletmeler için premium yerel uygulamalar ve sağlam backend hizmetleri geliştiriyoruz."
+    getStartedButtonTitle: "Başlayın"

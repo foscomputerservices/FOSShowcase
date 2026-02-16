@@ -2,3 +2,23 @@ en:
   LandingPageViewModel:
     loadingTitle: "Loading..."
     pageTitle: "FOS Computer Services, LLC -- Showcase"
+
+fr:
+  LandingPageViewModel:
+    loadingTitle: "Chargement..."
+    pageTitle: "FOS Computer Services, LLC -- Vitrine"
+
+es:
+  LandingPageViewModel:
+    loadingTitle: "Cargando..."
+    pageTitle: "FOS Computer Services, LLC -- Escaparate"
+
+it:
+  LandingPageViewModel:
+    loadingTitle: "Caricamento..."
+    pageTitle: "FOS Computer Services, LLC -- Vetrina"
+
+tr:
+  LandingPageViewModel:
+    loadingTitle: "Yükleniyor..."
+    pageTitle: "FOS Computer Services, LLC -- Vitrin"

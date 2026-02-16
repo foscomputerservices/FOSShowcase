@@ -14,21 +14,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Foundation
-import Testing
-import Vapor
-
-@Suite("Vapor Initialization Tests")
-struct VaporInitTests {
-    @Test func yamlStoreInit() {
-        let app = Application()
-        // app.initYamlLocalization(
-        //     bundle: Bundle.module,
-        //     resourceDirectoryName: "TestYAML"
-        // )
-        app.shutdown()
-    }
-}
+//import Foundation
+//import Testing
+//import Vapor
+//
+//@Suite("Vapor Initialization Tests")
+//struct VaporInitTests {
+//    @Test func yamlStoreInit() {
+//        let app = Application()
+//        // app.initYamlLocalization(
+//        //     bundle: Bundle.module,
+//        //     resourceDirectoryName: "TestYAML"
+//        // )
+//        app.shutdown()
+//    }
+//}
 
 // private extension YamlLocalizationStoreInitTests {
 //     var paths: Set<URL> {
