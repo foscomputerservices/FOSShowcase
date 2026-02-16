@@ -18,9 +18,13 @@ import FOSFoundation
 import FOSMVVM
 import Foundation
 
-public final class LandingPageRequest: ViewModelRequest {
+public final class LandingPageRequest: ViewModelRequest, @unchecked Sendable {
     public typealias Query = EmptyQuery
-    public let responseBody: LandingPageViewModel?
+    public typealias Fragment = EmptyFragment
+    public typealias RequestBody = EmptyBody
+    public typealias ResponseError = EmptyError
+
+    public var responseBody: LandingPageViewModel?
 
     public init(query: FOSMVVM.EmptyQuery? = nil, fragment: FOSMVVM.EmptyFragment? = nil, requestBody: FOSMVVM.EmptyBody? = nil, responseBody: LandingPageViewModel? = nil) {
         self.responseBody = responseBody
