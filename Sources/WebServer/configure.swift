@@ -33,6 +33,7 @@ public func configure(_ app: Application) async throws {
 
     app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
 
+    #if !DEBUG
     // PostgreSQL via SSH tunnel (host.docker.internal -> Pi host -> fos-openclaw)
     let pgConfig = SQLPostgresConfiguration(
         coreConfiguration: .init(
@@ -49,6 +50,7 @@ public func configure(_ app: Application) async throws {
 
     app.migrations.add(CreateTVAlert())
     try await app.autoMigrate()
+    #endif
 
     // register routes
     try routes(app)
