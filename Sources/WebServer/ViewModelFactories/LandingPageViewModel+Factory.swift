@@ -27,4 +27,8 @@ extension LandingPageViewModel: VaporViewModelFactory {
     public static func model(context: VaporModelFactoryContext<VMRequest>) async throws -> Self {
         .init()
     }
+
+    public func encodeResponse(for request: Vapor.Request) async throws -> Vapor.Response {
+        try buildResponse(request)
+    }
 }
