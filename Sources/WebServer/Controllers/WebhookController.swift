@@ -45,6 +45,24 @@ struct WebhookController: RouteCollection {
             )
         }
 
+        // Grace period: suppress alerts that fire within 60s of creation.
+        // When create_alerts creates an alert inactive then activates it,
+        // TradingView may still evaluate stale template conditions on activation.
+        // The created_at timestamp lets us detect and discard these false fires.
+        if let createdAtString = payload.createdAt {
+            let formatter = ISO8601DateFormatter()
+            formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+            // Try with fractional seconds first, then without
+            if let createdDate = formatter.date(from: createdAtString)
+                ?? ISO8601DateFormatter().date(from: createdAtString) {
+                let elapsed = Date().timeIntervalSince(createdDate)
+                if elapsed >= 0 && elapsed < 60 {
+                    req.logger.info("Alert suppressed (grace period): \(payload.indicator) \(payload.ticker) created \(String(format: "%.1f", elapsed))s ago")
+                    return Response(status: .ok, body: .init(string: "OK (grace period)"))
+                }
+            }
+        }
+
         // Encode full payload as JSON for raw_json column
         let encoder = JSONEncoder()
         let rawJSONData = try encoder.encode(payload)
@@ -91,9 +109,11 @@ struct TradingViewPayload: Content {
     let direction: String?
     let exchange: String?
     let assetClass: String?
+    let createdAt: String?
 
     enum CodingKeys: String, CodingKey {
         case secret, indicator, signal, ticker, timeframe, price, direction, exchange
         case assetClass = "asset_class"
+        case createdAt = "created_at"
     }
 }
