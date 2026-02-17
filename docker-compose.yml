@@ -60,6 +60,8 @@ services:
       DATABASE_NAME: foscs
       DATABASE_USER: openclaw_webhook
       DATABASE_PASSWORD: ${POSTGRES_WEBHOOK_PASSWORD}
+      MIGRATION_DATABASE_USER: openclaw_admin
+      MIGRATION_DATABASE_PASSWORD: ${POSTGRES_ADMIN_PASSWORD}
       WEBHOOK_SECRET: ${WEBHOOK_SECRET}
     # Ports are now internal, exposed to Nginx, not directly to the host
     expose:

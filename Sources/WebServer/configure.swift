@@ -21,6 +21,11 @@ import FOSMVVM
 import Foundation
 import Vapor
 
+extension DatabaseID {
+    /// Admin connection used only for migrations (DDL)
+    static let migrator = DatabaseID(string: "migrator")
+}
+
 // configures your application
 public func configure(_ app: Application) async throws {
     SystemVersion.setCurrentVersion(.currentApplicationVersion)
@@ -34,22 +39,36 @@ public func configure(_ app: Application) async throws {
     app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
 
     #if !DEBUG
-    // PostgreSQL via SSH tunnel (host.docker.internal -> Pi host -> fos-openclaw)
+    let dbHost = Environment.get("DATABASE_HOST") ?? "host.docker.internal"
+    let dbPort = Environment.get("DATABASE_PORT").flatMap(Int.init) ?? 5432
+    let dbName = Environment.get("DATABASE_NAME") ?? "foscs"
+
+    // Runtime connection — openclaw_webhook (DML only)
     let pgConfig = SQLPostgresConfiguration(
         coreConfiguration: .init(
-            host: Environment.get("DATABASE_HOST") ?? "host.docker.internal",
-            port: Environment.get("DATABASE_PORT").flatMap(Int.init) ?? 5432,
+            host: dbHost, port: dbPort,
             username: Environment.get("DATABASE_USER") ?? "openclaw_webhook",
             password: Environment.get("DATABASE_PASSWORD") ?? "",
-            database: Environment.get("DATABASE_NAME") ?? "foscs",
-            tls: .disable
+            database: dbName, tls: .disable
         ),
         searchPath: ["webhook", "public"]
     )
     app.databases.use(.postgres(configuration: pgConfig), as: .psql)
 
-    app.migrations.add(CreateTVAlert())
-    app.migrations.add(AddTVAlertIndexes())
+    // Migration connection — openclaw_admin (DDL)
+    let migratorConfig = SQLPostgresConfiguration(
+        coreConfiguration: .init(
+            host: dbHost, port: dbPort,
+            username: Environment.get("MIGRATION_DATABASE_USER") ?? "openclaw_admin",
+            password: Environment.get("MIGRATION_DATABASE_PASSWORD") ?? "",
+            database: dbName, tls: .disable
+        ),
+        searchPath: ["webhook", "public"]
+    )
+    app.databases.use(.postgres(configuration: migratorConfig), as: .migrator)
+
+    app.migrations.add(CreateTVAlert(), to: .migrator)
+    app.migrations.add(AddTVAlertIndexes(), to: .migrator)
     try await app.autoMigrate()
     #endif
 
