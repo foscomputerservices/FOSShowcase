@@ -49,6 +49,7 @@ public func configure(_ app: Application) async throws {
     app.databases.use(.postgres(configuration: pgConfig), as: .psql)
 
     app.migrations.add(CreateTVAlert())
+    app.migrations.add(AddTVAlertIndexes())
     try await app.autoMigrate()
     #endif
 
