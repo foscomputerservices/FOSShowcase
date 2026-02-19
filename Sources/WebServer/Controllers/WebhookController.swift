@@ -29,7 +29,13 @@ struct WebhookController: RouteCollection {
 
     @Sendable
     private func receiveTradingViewAlert(req: Request) async throws -> Response {
-        let payload = try req.content.decode(TradingViewPayload.self)
+        // Force JSON decoding regardless of Content-Type header.
+        // TradingView sends webhooks as text/plain even when the body is valid JSON,
+        // and Vapor's content negotiation rejects plaintext dictionary decoding.
+        guard let buffer = req.body.data else {
+            throw Abort(.badRequest, reason: "Empty body")
+        }
+        let payload = try JSONDecoder().decode(TradingViewPayload.self, from: Data(buffer: buffer))
 
         // Validate webhook secret
         guard let expectedSecret = Environment.get("WEBHOOK_SECRET"),
