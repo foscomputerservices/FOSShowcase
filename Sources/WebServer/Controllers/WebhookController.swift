@@ -27,15 +27,76 @@ struct WebhookController: RouteCollection {
         webhooks.post("tradingview", use: receiveTradingViewAlert)
     }
 
+    /// Parse the request body as TradingViewPayload, handling both formats:
+    /// 1. Pure JSON: {"secret":"...","indicator":"gann_swing",...}
+    /// 2. TIS-delimited: ---TIS-ALERT-START--- secret:VALUE {JSON} ---TIS-ALERT-END---
+    private func decodePayload(from body: String) throws -> TradingViewPayload {
+        let trimmed = body.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        // Pure JSON — try direct decode first
+        if trimmed.hasPrefix("{"),
+           let data = trimmed.data(using: .utf8),
+           let payload = try? JSONDecoder().decode(TradingViewPayload.self, from: data) {
+            return payload
+        }
+
+        // TIS-delimited format — extract secret and JSON block
+        guard trimmed.contains("---TIS-ALERT-START---") else {
+            throw Abort(.badRequest, reason: "Invalid payload: not JSON or TIS-delimited")
+        }
+
+        // Extract secret from "secret:VALUE"
+        guard let secretRange = trimmed.range(of: #"secret:([^\s{]+)"#, options: .regularExpression) else {
+            throw Abort(.badRequest, reason: "No secret found in TIS payload")
+        }
+        let secret = String(trimmed[secretRange].dropFirst("secret:".count))
+
+        // Extract JSON object between first { and last }
+        guard let jsonStart = trimmed.firstIndex(of: "{"),
+              let jsonEnd = trimmed.lastIndex(of: "}") else {
+            throw Abort(.badRequest, reason: "No JSON block found in TIS payload")
+        }
+        let jsonString = String(trimmed[jsonStart...jsonEnd])
+
+        guard let jsonData = jsonString.data(using: .utf8),
+              var dict = try JSONSerialization.jsonObject(with: jsonData) as? [String: Any] else {
+            throw Abort(.badRequest, reason: "Invalid JSON in TIS payload")
+        }
+
+        // Inject secret (TIS format has it outside the JSON)
+        dict["secret"] = secret
+
+        // Split "BATS:NVD" ticker into exchange + bare ticker
+        if let ticker = dict["ticker"] as? String, ticker.contains(":") {
+            let parts = ticker.split(separator: ":", maxSplits: 1)
+            dict["exchange"] = String(parts[0])
+            dict["ticker"] = String(parts[1])
+        }
+
+        // Map TradingView resolution strings to our short format
+        if let tf = dict["timeframe"] as? String {
+            switch tf {
+            case "240": dict["timeframe"] = "4H"
+            case "1D":  dict["timeframe"] = "D"
+            case "1W":  dict["timeframe"] = "W"
+            default: break
+            }
+        }
+
+        let modifiedData = try JSONSerialization.data(withJSONObject: dict)
+        return try JSONDecoder().decode(TradingViewPayload.self, from: modifiedData)
+    }
+
     @Sendable
     private func receiveTradingViewAlert(req: Request) async throws -> Response {
-        // Force JSON decoding regardless of Content-Type header.
+        // Force text decoding regardless of Content-Type header.
         // TradingView sends webhooks as text/plain even when the body is valid JSON,
         // and Vapor's content negotiation rejects plaintext dictionary decoding.
         guard let buffer = req.body.data else {
             throw Abort(.badRequest, reason: "Empty body")
         }
-        let payload = try JSONDecoder().decode(TradingViewPayload.self, from: Data(buffer: buffer))
+        let bodyString = String(buffer: buffer)
+        let payload = try decodePayload(from: bodyString)
 
         // Validate webhook secret
         guard let expectedSecret = Environment.get("WEBHOOK_SECRET"),
