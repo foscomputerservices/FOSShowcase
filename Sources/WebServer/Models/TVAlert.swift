@@ -56,8 +56,8 @@ final class TVAlert: Model, @unchecked Sendable {
     @OptionalField(key: "processed_at")
     var processedAt: Date?
 
-    @Field(key: "delivery_status")
-    var deliveryStatus: String
+    @OptionalField(key: "delivery_status")
+    var deliveryStatus: String?
 
     @OptionalField(key: "source_ip")
     var sourceIP: String?
@@ -89,7 +89,7 @@ final class TVAlert: Model, @unchecked Sendable {
         self.assetClass = assetClass
         self.rawJSON = rawJSON
         self.processed = false
-        self.deliveryStatus = "pending"
+        self.deliveryStatus = nil
         self.sourceIP = sourceIP
     }
 }

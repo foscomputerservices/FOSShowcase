@@ -31,7 +31,7 @@ struct CreateTVAlert: AsyncMigration {
             .field("raw_json", .string, .required)
             .field("processed", .bool, .required, .sql(.default(false)))
             .field("processed_at", .datetime)
-            .field("delivery_status", .string, .required, .sql(.default("pending")))
+            .field("delivery_status", .string, .sql(.default("pending")))
             .field("source_ip", .string)
             .field("received_at", .datetime)
             .create()
