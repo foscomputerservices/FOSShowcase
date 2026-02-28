@@ -27,11 +27,23 @@ struct WebhookController: RouteCollection {
         webhooks.post("tradingview", use: receiveTradingViewAlert)
     }
 
-    /// Parse the request body as TradingViewPayload, handling both formats:
-    /// 1. Pure JSON: {"secret":"...","indicator":"gann_swing",...}
-    /// 2. TIS-delimited: ---TIS-ALERT-START--- secret:VALUE {JSON} ---TIS-ALERT-END---
+    /// Sanitize TradingView's extended symbol format.
+    /// Pine Script wraps syminfo.tickerid in quotes, but for some symbols TV resolves
+    /// it to ={"currency-id":"USD","symbol":"EXCHANGE:TICKER"} which breaks the JSON.
+    /// The raw text looks like: "ticker":"={"currency-id":"USD","symbol":"COINEX:HONEYUSDT"}"
+    /// Replace the entire quoted extended format with just "EXCHANGE:TICKER".
+    private func sanitizeExtendedSymbols(in text: String) -> String {
+        text.replacingOccurrences(
+            of: #""=\{[^}]*"symbol":"([^"]*)"[^}]*\}""#,
+            with: "\"$1\"",
+            options: .regularExpression
+        )
+    }
+
     private func decodePayload(from body: String) throws -> TradingViewPayload {
-        let trimmed = body.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmed = sanitizeExtendedSymbols(
+            in: body.trimmingCharacters(in: .whitespacesAndNewlines)
+        )
 
         // Pure JSON — try direct decode first
         if trimmed.hasPrefix("{"),
@@ -59,7 +71,7 @@ struct WebhookController: RouteCollection {
         let jsonString = String(trimmed[jsonStart...jsonEnd])
 
         guard let jsonData = jsonString.data(using: .utf8),
-              var dict = try JSONSerialization.jsonObject(with: jsonData) as? [String: Any] else {
+              var dict = try? JSONSerialization.jsonObject(with: jsonData) as? [String: Any] else {
             throw Abort(.badRequest, reason: "Invalid JSON in TIS payload")
         }
 
