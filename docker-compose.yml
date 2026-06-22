@@ -40,6 +40,10 @@ services:
       dockerfile: Dockerfile-client
     environment:
       <<: *shared_environment
+      # Base URL for backend-served assets. Empty = relative/same-origin
+      # (/Images/... routed to the backend by nginx on 443). Override only
+      # to serve assets from another origin/CDN.
+      BACKEND_PUBLIC_URL: ${BACKEND_PUBLIC_URL:-}
     # Ports are now internal, exposed to Nginx, not directly to the host
     expose:
       - '8082' # Expose internal port for Nginx to access
@@ -55,7 +59,7 @@ services:
       dockerfile: Dockerfile-server
     environment:
       <<: *shared_environment
-      DATABASE_HOST: host.docker.internal
+      DATABASE_HOST: ${DATABASE_HOST:-10.1.2.158}
       DATABASE_PORT: 5432
       DATABASE_NAME: foscs
       DATABASE_USER: openclaw_webhook
@@ -66,8 +70,6 @@ services:
     # Ports are now internal, exposed to Nginx, not directly to the host
     expose:
       - '8083' # Expose internal port for Nginx to access
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     volumes:
       - './logs/server:/var/log/vapor_server'  # Mount server logs to host volume
     # user: '0' # uncomment to run as root for testing purposes even though Dockerfile defines 'vapor' user.

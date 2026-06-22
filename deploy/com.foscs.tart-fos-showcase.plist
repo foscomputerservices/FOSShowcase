@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.foscs.tart-fos-showcase</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/tart</string>
+        <string>run</string>
+        <string>fos-showcase</string>
+        <string>--net-bridged=REPLACE_WITH_VLAN3_INTERFACE</string>
+        <string>--no-graphics</string>
+    </array>
+    <key>KeepAlive</key>
+    <true/>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/tmp/tart-fos-showcase.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/tart-fos-showcase.err.log</string>
+</dict>
+</plist>
