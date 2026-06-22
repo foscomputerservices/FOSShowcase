@@ -234,11 +234,16 @@ one block into the SSH session.
 # ============================================================
 
 # --- 1. Static network (netplan) ---
-sudo tee /etc/netplan/01-static.yaml > /dev/null <<'NETPLAN'
+# Discover the primary NIC name (Tart Ubuntu guests are often enp0s1, not eth0):
+IFACE=$(ip -o link show | awk -F': ' '$2 != "lo"{print $2; exit}')
+echo "Primary interface: $IFACE"   # substitute this name in the netplan below
+
+# Replace <IFACE> in the heredoc with the value printed above before applying:
+sudo tee /etc/netplan/01-static.yaml > /dev/null <<NETPLAN
 network:
   version: 2
   ethernets:
-    eth0:
+    $IFACE:
       dhcp4: false
       addresses:
         - 10.1.3.10/24
@@ -335,7 +340,7 @@ echo "Reconnect via: ssh admin@10.1.3.10"
 # Run these from inside the VM after reconnecting on 10.1.3.10:
 
 # Network identity:
-ip a show eth0          # must show 10.1.3.10/24
+ip a show <IFACE>       # must show 10.1.3.10/24 (replace <IFACE> with the discovered NIC name, e.g. enp0s1)
 ping -c 2 10.1.3.1     # gateway reachable (ARP works)
 ping -c 2 1.1.1.1      # internet reachable
 
