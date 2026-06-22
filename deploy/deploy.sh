@@ -28,7 +28,7 @@ ssh "${SSH_OPTS[@]}" "$VM_HOST" "sudo mkdir -p '$VM_PATH' && sudo chown \$(id -u
 echo "==> Syncing repo (excluding build/vcs/secrets)"
 rsync -az --delete \
   --exclude '.git' --exclude '.build' --exclude 'Build' --exclude '.swiftpm' \
-  --exclude 'ssl' --exclude '.env' --exclude 'ssl.zip' \
+  --exclude 'ssl' --exclude '.env' --exclude 'ssl.zip' --exclude 'logs' \
   -e "$SSH_CMD" \
   "$REPO_ROOT/" "$VM_HOST:$VM_PATH/"
 
