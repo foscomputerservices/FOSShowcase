@@ -46,6 +46,53 @@ FOSShowcaseiOSApp is a cross-platform [SwiftUI](https://developer.apple.com/xcod
 - [tvOS](https://en.wikipedia.org/wiki/TvOS) - [Install]()
 - [visionOS](https://developer.apple.com/visionos) - [Install]()
 
+## Deploying
+
+The public web service (Vapor backend + Ignite web app, behind nginx) runs as a
+Docker Compose stack on an **isolated Tart Linux VM** (`fos-showcase`, `10.1.3.10`)
+on the `fos-openclaw` host, on the UniFi "Public Servers" VLAN-3 DMZ. The repo is
+the source of truth and the VM is disposable. Full architecture, network rules, and
+the rebuild procedure are in [`docs/runbook-pi-to-vm.md`](docs/runbook-pi-to-vm.md).
+
+### Routine deploy (code / config change)
+
+Run from a machine that has the canonical secrets at `~/.foscs/fosshowcase/{.env,ssl/}`:
+
+```bash
+git commit ...        # commit your change first
+./deploy/deploy.sh
+```
+
+`deploy/deploy.sh` ProxyJumps through the `fos-openclaw` host (the VM's DMZ VLAN is
+reachable only via the host), then:
+
+1. rsyncs the repo to `/opt/fosshowcase` on the VM,
+2. delivers `.env` + `ssl/` (mode 600), and
+3. runs `docker compose up -d --build` and prints `docker compose ps`.
+
+Notes:
+
+- A deploy **rebuilds both Swift apps** (~20–40 min) — the Dockerfiles `COPY` the
+  whole repo, so any change invalidates the shared build cache.
+- Secrets and TLS certs are **not** in git; they live at `~/.foscs/fosshowcase/` and
+  are pushed at deploy time. `deploy/env.example` documents the required variables.
+- Override targets via env: `VM_HOST`, `JUMP_HOST` (set `JUMP_HOST=""` to deploy
+  directly when already on the internal network), `SRC_SECRETS`.
+
+### Full VM rebuild (disposable VM)
+
+If the VM is lost, rebuild from the runbook:
+
+1. `deploy/provision-vm.sh` — create the Tart VM on VLAN 3 (`VLAN_IFACE=vlan1`),
+2. in-guest provisioning (static IP, Docker, NTP, `deploy/nic-offload-off.service`, SSH hardening),
+3. install the host LaunchAgents (`deploy/com.foscs.tart-fos-showcase*.plist`) for
+   auto-start on reboot + daily checkpoints, then
+4. `deploy/deploy.sh`.
+
+Network and database authorization (UDM port-forward + firewall, Postgres `pg_hba`)
+is permanent and managed in the `openclaw-config` repo — it does not need redoing
+per deploy.
+
 ## Maintainers
 
 This project is maintained by [David Hunt](https://www.linkedin.com/in/davidhun/) owner of [FOS Computer Services, LLC](https://www.linkedin.com/company/fos-computer-services).
