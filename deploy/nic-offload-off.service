@@ -1,0 +1,20 @@
+[Unit]
+# Tart bridged-VLAN throughput fix.
+# The virtio NIC's TX segmentation offload (TSO/GSO) produces oversized/bad
+# segments on the bridged tagged-VLAN path, collapsing UPLOAD throughput
+# (~0.7 MB/s) while download stays fast — so served images/pages crawl.
+# Disabling offloads forces in-guest segmentation and restores full speed
+# (tested: 55-75 MB/s up, 23 MB/s down). Install on the fos-showcase VM:
+#   sudo cp deploy/nic-offload-off.service /etc/systemd/system/
+#   sudo systemctl enable --now nic-offload-off.service
+Description=Disable TSO/GSO/GRO on enp0s1 (Tart bridged-VLAN TX throughput fix)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/ethtool -K enp0s1 tso off gso off gro off
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

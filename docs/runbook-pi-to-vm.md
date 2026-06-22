@@ -268,6 +268,20 @@ sudo systemctl enable --now systemd-timesyncd
 timedatectl set-ntp true
 timedatectl status    # confirm: "System clock synchronized: yes"
 
+# --- 2b. NIC offload fix (REQUIRED for throughput) ---
+# On the Tart bridged tagged-VLAN path, the virtio NIC's TX segmentation
+# offload collapses UPLOAD throughput (~0.7 MB/s) — served pages/images crawl
+# while downloads stay fast. Disable offloads via a persistent unit.
+# (deploy/nic-offload-off.service in this repo; ethtool ships with Ubuntu.)
+sudo apt-get install -y ethtool
+sudo cp /opt/fosshowcase/deploy/nic-offload-off.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now nic-offload-off.service
+ethtool -k enp0s1 | grep -E 'tcp-segmentation-offload:|generic-segmentation-offload:'  # both: off
+# Verify upload speed from another LAN host (expect tens of MB/s, not ~0.7):
+#   curl -s --resolve foscomputerservices.com:443:10.1.3.10 -o /dev/null \
+#     -w '%{speed_download}\n' 'https://foscomputerservices.com/Images/Landing%20Page/About@3x.png'
+
 # --- 3. Docker CE + docker-compose-plugin (official repo, arm64) ---
 # Ubuntu's docker.io package does NOT ship docker compose v2 — use Docker's own repo.
 sudo apt-get update
