@@ -40,6 +40,10 @@ services:
       dockerfile: Dockerfile-client
     environment:
       <<: *shared_environment
+      # Base URL for backend-served assets. Empty = relative/same-origin
+      # (/Images/... routed to the backend by nginx on 443). Override only
+      # to serve assets from another origin/CDN.
+      BACKEND_PUBLIC_URL: ${BACKEND_PUBLIC_URL:-}
     # Ports are now internal, exposed to Nginx, not directly to the host
     expose:
       - '8082' # Expose internal port for Nginx to access
