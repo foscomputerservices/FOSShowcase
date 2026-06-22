@@ -15,15 +15,20 @@
 // limitations under the License.
 
 import Leaf
+import Vapor
 
 struct BackendURLTag: LeafTag {
     var name: String { "backendURL" }
 
     func render(_ context: LeafContext) throws -> LeafData {
+        // Base URL the browser uses for backend-served assets (e.g. /Images/...).
+        // Production default is EMPTY → relative, same-origin URLs ("/Images/...")
+        // which nginx routes to the backend on 443 (no 8081 exposure). Override
+        // with BACKEND_PUBLIC_URL only if assets must come from another origin/CDN.
         #if DEBUG
-        "http://localhost:8080"
+        return .string("http://localhost:8080")
         #else
-        "https://staging.foscomputerservices.com:8081"
+        return .string(Environment.get("BACKEND_PUBLIC_URL") ?? "")
         #endif
     }
 }
