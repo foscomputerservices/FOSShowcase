@@ -2,14 +2,18 @@
 set -euo pipefail
 
 # Deliver secrets/certs/repo to the fos-showcase VM and (re)deploy the stack.
-# Run from the dev Mac (local LAN — allowed by the management firewall pinhole).
+# The VM is on the isolated "Public Servers" VLAN (zone Web Servers), reachable
+# only via the fos-openclaw host — so we ProxyJump through it. Set JUMP_HOST=""
+# to connect directly (e.g. from a machine already in the Internal zone).
 
 VM_HOST="${VM_HOST:-admin@10.1.3.10}"
 VM_PATH="${VM_PATH:-/opt/fosshowcase}"
 SRC_SECRETS="${SRC_SECRETS:-$HOME/.foscs/fosshowcase}"   # canonical .env + ssl/ source
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+JUMP_HOST="${JUMP_HOST:-david@10.1.2.158}"               # fos-openclaw; set "" to disable ProxyJump
 SSH_OPTS=(-o StrictHostKeyChecking=accept-new)
-SSH_CMD="ssh -o StrictHostKeyChecking=accept-new"
+[ -n "$JUMP_HOST" ] && SSH_OPTS+=(-J "$JUMP_HOST")
+SSH_CMD="ssh -o StrictHostKeyChecking=accept-new${JUMP_HOST:+ -J $JUMP_HOST}"
 
 # Cert/key filenames MUST match nginx.conf's hardcoded paths
 # (ssl_certificate foscomputerservices.com.crt / ssl_certificate_key foscomputerservices.com.key).
@@ -23,7 +27,8 @@ ssh "${SSH_OPTS[@]}" "$VM_HOST" "sudo mkdir -p '$VM_PATH' && sudo chown \$(id -u
 
 echo "==> Syncing repo (excluding build/vcs/secrets)"
 rsync -az --delete \
-  --exclude '.git' --exclude '.build' --exclude 'ssl' --exclude '.env' \
+  --exclude '.git' --exclude '.build' --exclude 'Build' --exclude '.swiftpm' \
+  --exclude 'ssl' --exclude '.env' --exclude 'ssl.zip' \
   -e "$SSH_CMD" \
   "$REPO_ROOT/" "$VM_HOST:$VM_PATH/"
 
