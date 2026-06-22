@@ -9,6 +9,7 @@ VM_PATH="${VM_PATH:-/opt/fosshowcase}"
 SRC_SECRETS="${SRC_SECRETS:-$HOME/.foscs/fosshowcase}"   # canonical .env + ssl/ source
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SSH_OPTS=(-o StrictHostKeyChecking=accept-new)
+SSH_CMD="ssh -o StrictHostKeyChecking=accept-new"
 
 # Cert/key filenames MUST match nginx.conf's hardcoded paths
 # (ssl_certificate foscomputerservices.com.crt / ssl_certificate_key foscomputerservices.com.key).
@@ -23,13 +24,13 @@ ssh "${SSH_OPTS[@]}" "$VM_HOST" "sudo mkdir -p '$VM_PATH' && sudo chown \$(id -u
 echo "==> Syncing repo (excluding build/vcs/secrets)"
 rsync -az --delete \
   --exclude '.git' --exclude '.build' --exclude 'ssl' --exclude '.env' \
-  -e "ssh ${SSH_OPTS[*]}" \
+  -e "$SSH_CMD" \
   "$REPO_ROOT/" "$VM_HOST:$VM_PATH/"
 
 echo "==> Delivering secrets + certs (mode 600)"
-rsync -az -e "ssh ${SSH_OPTS[*]}" "$SRC_SECRETS/.env" "$VM_HOST:$VM_PATH/.env"
-rsync -az -e "ssh ${SSH_OPTS[*]}" "$SRC_SECRETS/ssl/" "$VM_HOST:$VM_PATH/ssl/"
-ssh "${SSH_OPTS[@]}" "$VM_HOST" "chmod 600 '$VM_PATH/.env' '$VM_PATH'/ssl/*.key"
+rsync -az -e "$SSH_CMD" "$SRC_SECRETS/.env" "$VM_HOST:$VM_PATH/.env"
+rsync -az -e "$SSH_CMD" "$SRC_SECRETS/ssl/" "$VM_HOST:$VM_PATH/ssl/"
+ssh "${SSH_OPTS[@]}" "$VM_HOST" "chmod 600 $VM_PATH/.env && chmod 600 $VM_PATH/ssl/*.key"
 
 echo "==> Building + starting stack"
 ssh "${SSH_OPTS[@]}" "$VM_HOST" "cd '$VM_PATH' && docker compose up -d --build"
