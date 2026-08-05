@@ -85,13 +85,16 @@ If the VM is lost, rebuild from the runbook:
 
 1. `deploy/provision-vm.sh` — create the Tart VM on VLAN 3 (`VLAN_IFACE=vlan1`),
 2. in-guest provisioning (static IP, Docker, NTP, `deploy/nic-offload-off.service`, SSH hardening),
-3. install the host LaunchAgents (`deploy/com.foscs.tart-fos-showcase*.plist`) for
-   auto-start on reboot + daily checkpoints, then
+3. install the host LaunchAgent (`deploy/com.foscs.tart-fos-showcase.plist`) so the VM
+   auto-starts on reboot, then
 4. `deploy/deploy.sh`.
 
 Network and database authorization (UDM port-forward + firewall, Postgres `pg_hba`)
 is permanent and managed in the `openclaw-config` repo — it does not need redoing
 per deploy.
+
+The VM keeps **no backups by design** — rebuilding from the repo *is* the recovery path,
+and the `<ops-host>` host is covered by Time Machine. See runbook Section 7.
 
 ## Maintainers
 
