@@ -468,7 +468,7 @@ Step 8: External validation
    └── See Section 6 (external checks)
 
 Step 9: Post-cutover
-   └── Section 7 (checkpoint LaunchAgent) + SYSTEM-MAP update
+   └── Section 7 (backup/recovery posture — nothing to install) + SYSTEM-MAP update
 ```
 
 ### Step 5 expanded: running deploy.sh
@@ -636,44 +636,53 @@ The test ticker must appear as the most recent row.
 
 ---
 
-## Section 7: Checkpoint LaunchAgent Install
+## Section 7: Backup & Recovery Posture
 
-The daily Tart checkpoint for `fos-showcase` runs at 02:30 (offset from `openclaw-vm`'s 02:00 to
-avoid I/O collision). The plist lives in this repo at
-`deploy/com.foscs.tart-fos-showcase-checkpoint.plist`. It calls the checkpoint script already
-deployed by openclaw-config at `~/.foscs/scripts/tart-daily-checkpoint.sh` with `fos-showcase` as
-the argument.
+**Nothing to install. The VM is disposable by design.**
 
-**This plist is NOT auto-deployed by openclaw-config's `deploy-all.sh`** — install it manually:
+`fos-showcase` keeps **no Tart checkpoints**, and that is deliberate — not an oversight. The
+recovery story is:
+
+1. **The repo is the source of truth.** Rebuild the VM per Section 3, then `deploy/deploy.sh`.
+2. **The host is backed up via Time Machine.** `fos-openclaw` itself is covered.
+3. **The only VM-resident state is secrets + certs**, and those are pushed at deploy time from
+   `~/.foscs/fosshowcase/{.env,ssl/}` on the dev Mac. Nothing unique lives on the VM.
+
+So `tart list` showing no `fos-showcase-checkpoint-*` entries is **expected state**. Do not flag
+it as a gap. (Contrast with `openclaw-vm`, which *does* keep daily checkpoints — it holds state
+that isn't reproducible from a repo.)
+
+`deploy/com.foscs.tart-fos-showcase-checkpoint.plist` remains in the repo as an unused option. If
+you ever decide this VM does warrant checkpoints, install it on the host with `launchctl load`
+after `plutil -lint`; it calls `~/.foscs/scripts/tart-daily-checkpoint.sh fos-showcase` at 02:30
+(offset from `openclaw-vm`'s 02:00 to avoid I/O collision) and honours `RETENTION_COUNT=7`.
+
+### What DOES need to survive a reboot
+
+The one host-side LaunchAgent that matters is `deploy/com.foscs.tart-fos-showcase.plist`
+(`KeepAlive` + `RunAtLoad`), which restarts the VM itself. Confirm it is loaded:
 
 ```bash
-# On fos-openclaw (the Tart host):
-
-# 1. Copy to LaunchAgents:
-cp /path/to/FOSShowcase/deploy/com.foscs.tart-fos-showcase-checkpoint.plist \
-   ~/Library/LaunchAgents/
-
-# 2. Validate the plist:
-plutil -lint ~/Library/LaunchAgents/com.foscs.tart-fos-showcase-checkpoint.plist
-# Expected: OK
-
-# 3. Load:
-launchctl load ~/Library/LaunchAgents/com.foscs.tart-fos-showcase-checkpoint.plist
-
-# 4. Confirm it loaded (will NOT run immediately; StartCalendarInterval fires at 02:30):
-launchctl list | grep fos-showcase-checkpoint
-
-# 5. Manual test run (optional but recommended — confirms the script works before the first
-#    scheduled run):
-/Users/david/.foscs/scripts/tart-daily-checkpoint.sh fos-showcase
-
-# After the script completes, verify a checkpoint clone exists:
-tart list | grep fos-showcase-checkpoint
-# Expected: one entry like fos-showcase-checkpoint-20260622 (or similar date stamp)
+# On fos-openclaw:
+launchctl list | grep com.foscs.tart-fos-showcase
+tart list | grep fos-showcase    # State should be "running"
 ```
 
-**Retention:** the checkpoint script honours the `RETENTION_COUNT` environment variable (set to `7`
-in the plist); it prunes checkpoints older than 7 days automatically.
+Inside the VM, all three Compose services declare `restart: unless-stopped`, so Docker brings the
+stack back after a VM reboot or docker-daemon restart.
+
+> **Regression note (2026-07-25 → 2026-08-05, ~10.7 days of downtime):** `client` and `server`
+> originally had **no** restart policy — only `nginx` did. A host reboot left both app containers
+> `Exited (255)` permanently, while nginx crash-looped 15,418 times on
+> `host not found in upstream "server"`, so nothing bound :443. Fixed by adding
+> `restart: unless-stopped` to both services in `docker-compose.yml`. If you ever see this shape
+> again, note that nginx's exponential backoff will have maxed out and it will **not** pick up
+> revived upstreams on its own:
+>
+> ```bash
+> ssh -J david@10.1.2.158 admin@10.1.3.10 \
+>   'cd /opt/fosshowcase && docker compose up -d && docker compose restart nginx'
+> ```
 
 ---
 
