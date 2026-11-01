@@ -62,7 +62,7 @@ services:
       dockerfile: Dockerfile-server
     environment:
       <<: *shared_environment
-      DATABASE_HOST: ${DATABASE_HOST:-10.1.2.158}
+      DATABASE_HOST: ${DATABASE_HOST:?set in .env}
       DATABASE_PORT: 5432
       DATABASE_NAME: foscs
       DATABASE_USER: openclaw_webhook

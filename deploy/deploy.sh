@@ -2,15 +2,26 @@
 set -euo pipefail
 
 # Deliver secrets/certs/repo to the fos-showcase VM and (re)deploy the stack.
-# The VM is on the isolated "Public Servers" VLAN (zone Web Servers), reachable
-# only via the fos-openclaw host — so we ProxyJump through it. Set JUMP_HOST=""
-# to connect directly (e.g. from a machine already in the Internal zone).
+#
+# Where the VM is, and how to reach it, is private network detail and is NOT
+# in this public repo. It comes from $SRC_SECRETS/deploy.env (mode 600), next
+# to the .env and ssl/ this script already delivers:
+#
+#   VM_HOST=user@vm-address          # required
+#   JUMP_HOST=user@bastion-address   # optional; empty = connect directly
+#   VM_PATH=/opt/fosshowcase         # optional
+#
+# The runbook (VM build, network rules, recovery) lives in the private ops repo.
 
-VM_HOST="${VM_HOST:-admin@10.1.3.10}"
-VM_PATH="${VM_PATH:-/opt/fosshowcase}"
-SRC_SECRETS="${SRC_SECRETS:-$HOME/.foscs/fosshowcase}"   # canonical .env + ssl/ source
+SRC_SECRETS="${SRC_SECRETS:-$HOME/.foscs/fosshowcase}"   # canonical .env + ssl/ + deploy.env
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-JUMP_HOST="${JUMP_HOST:-david@10.1.2.158}"               # fos-openclaw; set "" to disable ProxyJump
+
+[ -f "$SRC_SECRETS/deploy.env" ] || { echo "Missing $SRC_SECRETS/deploy.env (VM_HOST, optional JUMP_HOST/VM_PATH)"; exit 1; }
+# shellcheck disable=SC1091
+. "$SRC_SECRETS/deploy.env"
+: "${VM_HOST:?deploy.env must set VM_HOST}"
+VM_PATH="${VM_PATH:-/opt/fosshowcase}"
+JUMP_HOST="${JUMP_HOST:-}"
 SSH_OPTS=(-o StrictHostKeyChecking=accept-new)
 [ -n "$JUMP_HOST" ] && SSH_OPTS+=(-J "$JUMP_HOST")
 SSH_CMD="ssh -o StrictHostKeyChecking=accept-new${JUMP_HOST:+ -J $JUMP_HOST}"
@@ -37,7 +48,7 @@ rsync -az -e "$SSH_CMD" "$SRC_SECRETS/.env" "$VM_HOST:$VM_PATH/.env"
 rsync -az -e "$SSH_CMD" "$SRC_SECRETS/ssl/" "$VM_HOST:$VM_PATH/ssl/"
 ssh "${SSH_OPTS[@]}" "$VM_HOST" "chmod 600 $VM_PATH/.env && chmod 600 $VM_PATH/ssl/*.key"
 
-# Build the images ONE AT A TIME. The VM has 2 vCPUs / 3.9 GB; `up --build`
+# Build the images ONE AT A TIME. The VM is small (2 vCPUs / 4 GB); `up --build`
 # compiles both Swift apps in parallel and each release build spawns ~1.6 GB
 # swift-frontend processes, so the kernel OOM-killer took the build (and sshd)
 # out on 2026-11-01. Sequential builds fit; the swap of running containers is
