@@ -40,3 +40,4 @@ echo "After boot, finish in-guest provisioning via SSH (see provision-guest snip
 echo "  - netplan static 10.1.3.10/24 gw 10.1.3.1"
 echo "  - Docker CE + docker-compose-plugin from download.docker.com (arm64)"
 echo "  - enable systemd-timesyncd (clock-sensitive HMAC/TLS)"
+echo "  - 8 GB swapfile (Swift release builds OOM the 4 GB guest without it; runbook 3b step 4b)"

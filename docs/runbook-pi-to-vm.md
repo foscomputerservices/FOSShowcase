@@ -322,6 +322,19 @@ sudo growpart /dev/sda 1
 sudo resize2fs /dev/sda1
 df -h /   # should now show ~30 GB
 
+# --- 4b. Swap (REQUIRED for deploys) ---
+# The VM has 4 GB RAM and a Swift release build (whole-module optimization)
+# runs swift-frontend processes above that; on 2026-11-01 the kernel
+# OOM-killer ended the build, sshd and DNS. 8 GB of swap lets the build
+# finish (slower while it spills, but it completes). deploy.sh also builds
+# the images one at a time and the Dockerfiles pass --jobs 1.
+sudo fallocate -l 8G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo "/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab > /dev/null
+swapon --show   # expect /swapfile 8G
+
 # --- 5. SSH hardening ---
 # Install your public key:
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
