@@ -28,7 +28,7 @@ validation on `10.1.3.10` passes in full.
 | Database | `foscs` on `10.1.2.158:5432` |
 | DB runtime role | `openclaw_webhook` |
 | DB migration role | `openclaw_admin` |
-| psql binary | `/opt/homebrew/Cellar/postgresql@18/18.2/bin/psql` |
+| psql binary | `/opt/homebrew/opt/postgresql@18/bin/psql` |
 | Cert filenames | `foscomputerservices.com.crt` / `foscomputerservices.com.key` (hardcoded in nginx.conf) |
 | Canonical secrets/certs | `~/.foscs/fosshowcase/{.env,ssl/}` on the dev Mac (mode 600) |
 | VM repo path | `/opt/fosshowcase` |
@@ -392,6 +392,32 @@ launchctl load ~/Library/LaunchAgents/com.foscs.tart-fos-showcase.plist
 tart list | grep fos-showcase    # shows "running"
 ```
 
+### 3e. Install the Postgres stale-lock LaunchAgent on fos-openclaw (host)
+
+An unclean host shutdown (an OS upgrade reboot, a power cut) can kill postgres mid-shutdown and leave `postmaster.pid` behind. After reboot the recorded PID may belong to an unrelated process, so Homebrew's `postgresql@18` service refuses to start ("lock file already exists") every 10 s forever, and the showcase `server` container crash-loops on `connection refused`. This happened on 2026-10-06 after the macOS 27.0.1 upgrade.
+
+`deploy/postgres-clear-stale-lock.sh` moves the lock aside only when the PID is not a running postgres **and** nothing is listening on the cluster port. `deploy/com.foscs.postgres-stale-lock.plist` runs it at login/boot and every 5 minutes; it is a silent no-op while postgres is healthy.
+
+```bash
+# On fos-openclaw:
+cp /path/to/FOSShowcase/deploy/postgres-clear-stale-lock.sh ~/.foscs/scripts/
+chmod +x ~/.foscs/scripts/postgres-clear-stale-lock.sh
+cp /path/to/FOSShowcase/deploy/com.foscs.postgres-stale-lock.plist ~/Library/LaunchAgents/
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.foscs.postgres-stale-lock.plist
+
+# Confirm (exit status 0, and the log is empty while postgres is healthy):
+launchctl list | grep com.foscs.postgres-stale-lock
+cat ~/.foscs/postgres-stale-lock.log
+```
+
+Manual recovery, if you ever need it before the agent runs:
+
+```bash
+pgrep -x postgres || mv /opt/homebrew/var/postgresql@18/postmaster.pid{,.stale}
+brew services restart postgresql@18
+tail /opt/homebrew/var/log/postgresql@18.log   # expect "database system is ready to accept connections"
+```
+
 ---
 
 ## Section 4: Live pg_hba Apply (No Restart)
@@ -407,7 +433,7 @@ PG_HBA="$(psql_bin -U postgres -t -c "SHOW hba_file;" | tr -d ' ')"
 # /opt/homebrew/var/postgresql@18/pg_hba.conf
 
 # Use the full psql path (not in PATH by default):
-PSQL=/opt/homebrew/Cellar/postgresql@18/18.2/bin/psql
+PSQL=/opt/homebrew/opt/postgresql@18/bin/psql
 
 # 1. Confirm the line isn't already there:
 grep "10.1.3.10" /opt/homebrew/var/postgresql@18/pg_hba.conf || true
@@ -561,7 +587,7 @@ Then confirm the row was inserted — use the `webhook_read_alerts` MCP tool or:
 
 ```bash
 # On fos-openclaw (the DB host):
-/opt/homebrew/Cellar/postgresql@18/18.2/bin/psql -U openclaw_webhook -d foscs \
+/opt/homebrew/opt/postgresql@18/bin/psql -U openclaw_webhook -d foscs \
   -c "SELECT * FROM webhook.tv_alerts ORDER BY created_at DESC LIMIT 3;"
 # The TEST row must appear.
 ```
@@ -659,13 +685,13 @@ after `plutil -lint`; it calls `~/.foscs/scripts/tart-daily-checkpoint.sh fos-sh
 
 ### What DOES need to survive a reboot
 
-The one host-side LaunchAgent that matters is `deploy/com.foscs.tart-fos-showcase.plist`
-(`KeepAlive` + `RunAtLoad`), which restarts the VM itself. Confirm it is loaded:
+Two host-side LaunchAgents matter: `deploy/com.foscs.tart-fos-showcase.plist` (`KeepAlive` + `RunAtLoad`), which restarts the VM itself, and `deploy/com.foscs.postgres-stale-lock.plist` (Section 3e), which lets Homebrew postgres recover from an unclean shutdown. Confirm both are loaded:
 
 ```bash
 # On fos-openclaw:
-launchctl list | grep com.foscs.tart-fos-showcase
+launchctl list | grep -E "com.foscs.tart-fos-showcase|com.foscs.postgres-stale-lock"
 tart list | grep fos-showcase    # State should be "running"
+lsof -nP -iTCP:5432 -sTCP:LISTEN # postgres must be listening
 ```
 
 Inside the VM, all three Compose services declare `restart: unless-stopped`, so Docker brings the
