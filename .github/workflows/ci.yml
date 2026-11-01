@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest] #, windows-latest]
-        swift: ["6.2.1"]
+        swift: ["6.2.3"]
       fail-fast: false
     steps:
       - uses: SwiftyLab/setup-swift@d60245579ea3836a3f2fa65ebbe1e8891d577c76 # v1.14.2
