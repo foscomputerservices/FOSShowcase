@@ -37,8 +37,16 @@ rsync -az -e "$SSH_CMD" "$SRC_SECRETS/.env" "$VM_HOST:$VM_PATH/.env"
 rsync -az -e "$SSH_CMD" "$SRC_SECRETS/ssl/" "$VM_HOST:$VM_PATH/ssl/"
 ssh "${SSH_OPTS[@]}" "$VM_HOST" "chmod 600 $VM_PATH/.env && chmod 600 $VM_PATH/ssl/*.key"
 
-echo "==> Building + starting stack"
-ssh "${SSH_OPTS[@]}" "$VM_HOST" "cd '$VM_PATH' && docker compose up -d --build"
+# Build the images ONE AT A TIME. The VM has 2 vCPUs / 3.9 GB; `up --build`
+# compiles both Swift apps in parallel and each release build spawns ~1.6 GB
+# swift-frontend processes, so the kernel OOM-killer took the build (and sshd)
+# out on 2026-11-01. Sequential builds fit; the swap of running containers is
+# still a single `up -d` at the end.
+echo "==> Building images (sequentially: server, client, nginx)"
+ssh "${SSH_OPTS[@]}" "$VM_HOST" "cd '$VM_PATH' && docker compose build server && docker compose build client && docker compose build nginx"
+
+echo "==> Starting stack"
+ssh "${SSH_OPTS[@]}" "$VM_HOST" "cd '$VM_PATH' && docker compose up -d"
 
 echo "==> Container status"
 ssh "${SSH_OPTS[@]}" "$VM_HOST" "cd '$VM_PATH' && docker compose ps"

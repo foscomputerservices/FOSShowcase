@@ -26,7 +26,10 @@ COPY . .
 
 # Build everything, with optimizations, with static linking, and using jemalloc
 # N.B.: The static version of jemalloc is incompatible with the static Swift runtime.
+# --jobs 1: the fos-showcase VM has 3.9 GB; each parallel swift-frontend in a
+# release build peaks around 1.6 GB and the kernel OOM-killer ends the build.
 RUN swift build -c release \
+                --jobs 1 \
                 --static-swift-stdlib \
                 -Xlinker -ljemalloc \
                 --product VaporWebServer

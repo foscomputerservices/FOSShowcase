@@ -11,15 +11,15 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest] #, windows-latest]
-        swift: ["6.2.1"]
+        swift: ["6.2.3"]
       fail-fast: false
     steps:
-      - uses: SwiftyLab/setup-swift@latest
+      - uses: SwiftyLab/setup-swift@d60245579ea3836a3f2fa65ebbe1e8891d577c76 # v1.14.2
         with:
           development: true
           swift-version: ${{ matrix.swift }}
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Run Tests
         run: |
@@ -37,14 +37,14 @@ jobs:
     strategy:
       matrix:
         ios_platform: ["ios", "watchos", "tvos"] # , "visionos"]
-        xcode_version: ["16.0"]
+        xcode_version: ["26.2"]
 
     steps:
-      - uses: maxim-lobanov/setup-xcode@v1
+      - uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1.7.0
         with:
           xcode-version: ${{ matrix.xcode_version }}
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Install xcpretty
         run: |
