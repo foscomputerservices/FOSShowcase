@@ -342,16 +342,32 @@ mkdir -p ~/.ssh && chmod 700 ~/.ssh
 echo "PASTE_YOUR_PUBLIC_KEY_HERE" >> ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 
-# Disable password authentication:
-sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication no/' \
-  /etc/ssh/sshd_config
-sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin no/' \
-  /etc/ssh/sshd_config
-sudo systemctl reload sshd
+# Disable password authentication and root login.
+# DO NOT edit /etc/ssh/sshd_config with sed: Ubuntu's `Include sshd_config.d/*.conf`
+# runs first and cloud-init writes a root-only 50-cloud-init.conf that says
+# "PasswordAuthentication yes". sshd keeps the FIRST value it reads, so a
+# drop-in that sorts before it is the only edit that sticks. (On 2026-11-01
+# the VM was found with password login still enabled for this reason.)
+sudo rm -f /etc/ssh/sshd_config.d/50-cloud-init.conf
+printf 'PasswordAuthentication no\nPermitRootLogin no\n' \
+  | sudo tee /etc/ssh/sshd_config.d/00-hardening.conf > /dev/null
+sudo sshd -t && sudo systemctl reload ssh
+
+# Verify the EFFECTIVE policy, not the file you wrote:
+sudo sshd -T | grep -iE '^(passwordauthentication|permitrootlogin) '
+# expect: passwordauthentication no / permitrootlogin no
+
+# Replace the base image's default password (admin/admin, documented in 3a,
+# and this runbook is public). Keep a password so the Tart console still
+# works for recovery; store it at ~/.foscs/fosshowcase/vm-admin-password on
+# the dev Mac (mode 600).
+sudo passwd admin
 
 # Verify SSH key auth before closing this session:
 # Open a second terminal: ssh admin@10.1.3.10
-# Confirm it logs in without a password prompt, then close this window.
+# Confirm it logs in without a password prompt, and that
+#   ssh -o PubkeyAuthentication=no admin@10.1.3.10
+# is refused with "Permission denied (publickey)". Then close this window.
 
 # --- 6. Create repo directory ---
 sudo mkdir -p /opt/fosshowcase
