@@ -48,53 +48,36 @@ FOSShowcaseiOSApp is a cross-platform [SwiftUI](https://developer.apple.com/xcod
 
 ## Deploying
 
-The public web service (Vapor backend + Ignite web app, behind nginx) runs as a
-Docker Compose stack on an **isolated Tart Linux VM** (`fos-showcase`, `<redacted-ip>`)
-on the `<ops-host>` host, on the UniFi "Public Servers" VLAN-3 DMZ. The repo is
-the source of truth and the VM is disposable. Full architecture, network rules, and
-the rebuild procedure are in [`docs/runbook-pi-to-vm.md`](docs/runbook-pi-to-vm.md).
+The public web service (Vapor backend + Leaf web app, behind nginx) runs as a
+Docker Compose stack on a small private Linux VM. The repo is the source of
+truth and the VM is disposable: rebuilding from the repo is the recovery path.
+
+Where the VM is, how it is reached, how it was built, and the network rules
+around it are **not in this repository**. They live in the private ops repo
+(`openclaw-config`: `docs/fos-showcase/runbook-pi-to-vm.md` and
+`deploy/fos-showcase/`).
 
 ### Routine deploy (code / config change)
 
-Run from a machine that has the canonical secrets at `~/.foscs/fosshowcase/{.env,ssl/}`:
+Run from a machine that has the canonical secrets at `~/.foscs/fosshowcase/`
+(`.env`, `ssl/`, and `deploy.env` naming the VM):
 
 ```bash
 git commit ...        # commit your change first
 ./deploy/deploy.sh
 ```
 
-`deploy/deploy.sh` ProxyJumps through the `<ops-host>` host (the VM's DMZ VLAN is
-reachable only via the host), then:
-
-1. rsyncs the repo to `/opt/fosshowcase` on the VM,
-2. delivers `.env` + `ssl/` (mode 600), and
-3. runs `docker compose up -d --build` and prints `docker compose ps`.
+`deploy/deploy.sh` rsyncs the repo to the VM, delivers `.env` + `ssl/`
+(mode 600), builds the three images one at a time (the VM is small), and runs
+`docker compose up -d`.
 
 Notes:
 
-- A deploy **rebuilds both Swift apps** (~20–40 min) — the Dockerfiles `COPY` the
-  whole repo, so any change invalidates the shared build cache.
-- Secrets and TLS certs are **not** in git; they live at `~/.foscs/fosshowcase/` and
-  are pushed at deploy time. `deploy/env.example` documents the required variables.
-- Override targets via env: `VM_HOST`, `JUMP_HOST` (set `JUMP_HOST=""` to deploy
-  directly when already on the internal network), `SRC_SECRETS`.
-
-### Full VM rebuild (disposable VM)
-
-If the VM is lost, rebuild from the runbook:
-
-1. `deploy/provision-vm.sh` — create the Tart VM on VLAN 3 (`VLAN_IFACE=vlan1`),
-2. in-guest provisioning (static IP, Docker, NTP, `deploy/nic-offload-off.service`, SSH hardening),
-3. install the host LaunchAgent (`deploy/com.foscs.tart-fos-showcase.plist`) so the VM
-   auto-starts on reboot, then
-4. `deploy/deploy.sh`.
-
-Network and database authorization (UDM port-forward + firewall, Postgres `pg_hba`)
-is permanent and managed in the `openclaw-config` repo — it does not need redoing
-per deploy.
-
-The VM keeps **no backups by design** — rebuilding from the repo *is* the recovery path,
-and the `<ops-host>` host is covered by Time Machine. See runbook Section 7.
+- A deploy **rebuilds both Swift apps** (the Dockerfiles `COPY` the whole repo,
+  so any change invalidates the build cache); expect 30+ minutes.
+- Secrets, TLS certs and the VM address are **not** in git. `deploy/env.example`
+  documents the required application variables; `deploy.env` holds `VM_HOST`
+  and optionally `JUMP_HOST` / `VM_PATH`.
 
 ## Maintainers
 
