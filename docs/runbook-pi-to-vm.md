@@ -28,7 +28,7 @@ validation on `10.1.3.10` passes in full.
 | Database | `foscs` on `10.1.2.158:5432` |
 | DB runtime role | `openclaw_webhook` |
 | DB migration role | `openclaw_admin` |
-| psql binary | `/opt/homebrew/Cellar/postgresql@18/18.2/bin/psql` |
+| psql binary | `/opt/homebrew/opt/postgresql@18/bin/psql` |
 | Cert filenames | `foscomputerservices.com.crt` / `foscomputerservices.com.key` (hardcoded in nginx.conf) |
 | Canonical secrets/certs | `~/.foscs/fosshowcase/{.env,ssl/}` on the dev Mac (mode 600) |
 | VM repo path | `/opt/fosshowcase` |
@@ -322,6 +322,19 @@ sudo growpart /dev/sda 1
 sudo resize2fs /dev/sda1
 df -h /   # should now show ~30 GB
 
+# --- 4b. Swap (REQUIRED for deploys) ---
+# The VM has 4 GB RAM and a Swift release build (whole-module optimization)
+# runs swift-frontend processes above that; on 2026-11-01 the kernel
+# OOM-killer ended the build, sshd and DNS. 8 GB of swap lets the build
+# finish (slower while it spills, but it completes). deploy.sh also builds
+# the images one at a time and the Dockerfiles pass --jobs 1.
+sudo fallocate -l 8G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo "/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab > /dev/null
+swapon --show   # expect /swapfile 8G
+
 # --- 5. SSH hardening ---
 # Install your public key:
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
@@ -329,16 +342,32 @@ mkdir -p ~/.ssh && chmod 700 ~/.ssh
 echo "PASTE_YOUR_PUBLIC_KEY_HERE" >> ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 
-# Disable password authentication:
-sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication no/' \
-  /etc/ssh/sshd_config
-sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin no/' \
-  /etc/ssh/sshd_config
-sudo systemctl reload sshd
+# Disable password authentication and root login.
+# DO NOT edit /etc/ssh/sshd_config with sed: Ubuntu's `Include sshd_config.d/*.conf`
+# runs first and cloud-init writes a root-only 50-cloud-init.conf that says
+# "PasswordAuthentication yes". sshd keeps the FIRST value it reads, so a
+# drop-in that sorts before it is the only edit that sticks. (On 2026-11-01
+# the VM was found with password login still enabled for this reason.)
+sudo rm -f /etc/ssh/sshd_config.d/50-cloud-init.conf
+printf 'PasswordAuthentication no\nPermitRootLogin no\n' \
+  | sudo tee /etc/ssh/sshd_config.d/00-hardening.conf > /dev/null
+sudo sshd -t && sudo systemctl reload ssh
+
+# Verify the EFFECTIVE policy, not the file you wrote:
+sudo sshd -T | grep -iE '^(passwordauthentication|permitrootlogin) '
+# expect: passwordauthentication no / permitrootlogin no
+
+# Replace the base image's default password (admin/admin, documented in 3a,
+# and this runbook is public). Keep a password so the Tart console still
+# works for recovery; store it at ~/.foscs/fosshowcase/vm-admin-password on
+# the dev Mac (mode 600).
+sudo passwd admin
 
 # Verify SSH key auth before closing this session:
 # Open a second terminal: ssh admin@10.1.3.10
-# Confirm it logs in without a password prompt, then close this window.
+# Confirm it logs in without a password prompt, and that
+#   ssh -o PubkeyAuthentication=no admin@10.1.3.10
+# is refused with "Permission denied (publickey)". Then close this window.
 
 # --- 6. Create repo directory ---
 sudo mkdir -p /opt/fosshowcase
@@ -392,6 +421,32 @@ launchctl load ~/Library/LaunchAgents/com.foscs.tart-fos-showcase.plist
 tart list | grep fos-showcase    # shows "running"
 ```
 
+### 3e. Install the Postgres stale-lock LaunchAgent on fos-openclaw (host)
+
+An unclean host shutdown (an OS upgrade reboot, a power cut) can kill postgres mid-shutdown and leave `postmaster.pid` behind. After reboot the recorded PID may belong to an unrelated process, so Homebrew's `postgresql@18` service refuses to start ("lock file already exists") every 10 s forever, and the showcase `server` container crash-loops on `connection refused`. This happened on 2026-10-06 after the macOS 27.0.1 upgrade.
+
+`deploy/postgres-clear-stale-lock.sh` moves the lock aside only when the PID is not a running postgres **and** nothing is listening on the cluster port. `deploy/com.foscs.postgres-stale-lock.plist` runs it at login/boot and every 5 minutes; it is a silent no-op while postgres is healthy.
+
+```bash
+# On fos-openclaw:
+cp /path/to/FOSShowcase/deploy/postgres-clear-stale-lock.sh ~/.foscs/scripts/
+chmod +x ~/.foscs/scripts/postgres-clear-stale-lock.sh
+cp /path/to/FOSShowcase/deploy/com.foscs.postgres-stale-lock.plist ~/Library/LaunchAgents/
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.foscs.postgres-stale-lock.plist
+
+# Confirm (exit status 0, and the log is empty while postgres is healthy):
+launchctl list | grep com.foscs.postgres-stale-lock
+cat ~/.foscs/postgres-stale-lock.log
+```
+
+Manual recovery, if you ever need it before the agent runs:
+
+```bash
+pgrep -x postgres || mv /opt/homebrew/var/postgresql@18/postmaster.pid{,.stale}
+brew services restart postgresql@18
+tail /opt/homebrew/var/log/postgresql@18.log   # expect "database system is ready to accept connections"
+```
+
 ---
 
 ## Section 4: Live pg_hba Apply (No Restart)
@@ -407,7 +462,7 @@ PG_HBA="$(psql_bin -U postgres -t -c "SHOW hba_file;" | tr -d ' ')"
 # /opt/homebrew/var/postgresql@18/pg_hba.conf
 
 # Use the full psql path (not in PATH by default):
-PSQL=/opt/homebrew/Cellar/postgresql@18/18.2/bin/psql
+PSQL=/opt/homebrew/opt/postgresql@18/bin/psql
 
 # 1. Confirm the line isn't already there:
 grep "10.1.3.10" /opt/homebrew/var/postgresql@18/pg_hba.conf || true
@@ -468,7 +523,7 @@ Step 8: External validation
    └── See Section 6 (external checks)
 
 Step 9: Post-cutover
-   └── Section 7 (checkpoint LaunchAgent) + SYSTEM-MAP update
+   └── Section 7 (backup/recovery posture — nothing to install) + SYSTEM-MAP update
 ```
 
 ### Step 5 expanded: running deploy.sh
@@ -561,7 +616,7 @@ Then confirm the row was inserted — use the `webhook_read_alerts` MCP tool or:
 
 ```bash
 # On fos-openclaw (the DB host):
-/opt/homebrew/Cellar/postgresql@18/18.2/bin/psql -U openclaw_webhook -d foscs \
+/opt/homebrew/opt/postgresql@18/bin/psql -U openclaw_webhook -d foscs \
   -c "SELECT * FROM webhook.tv_alerts ORDER BY created_at DESC LIMIT 3;"
 # The TEST row must appear.
 ```
@@ -636,44 +691,53 @@ The test ticker must appear as the most recent row.
 
 ---
 
-## Section 7: Checkpoint LaunchAgent Install
+## Section 7: Backup & Recovery Posture
 
-The daily Tart checkpoint for `fos-showcase` runs at 02:30 (offset from `openclaw-vm`'s 02:00 to
-avoid I/O collision). The plist lives in this repo at
-`deploy/com.foscs.tart-fos-showcase-checkpoint.plist`. It calls the checkpoint script already
-deployed by openclaw-config at `~/.foscs/scripts/tart-daily-checkpoint.sh` with `fos-showcase` as
-the argument.
+**Nothing to install. The VM is disposable by design.**
 
-**This plist is NOT auto-deployed by openclaw-config's `deploy-all.sh`** — install it manually:
+`fos-showcase` keeps **no Tart checkpoints**, and that is deliberate — not an oversight. The
+recovery story is:
+
+1. **The repo is the source of truth.** Rebuild the VM per Section 3, then `deploy/deploy.sh`.
+2. **The host is backed up via Time Machine.** `fos-openclaw` itself is covered.
+3. **The only VM-resident state is secrets + certs**, and those are pushed at deploy time from
+   `~/.foscs/fosshowcase/{.env,ssl/}` on the dev Mac. Nothing unique lives on the VM.
+
+So `tart list` showing no `fos-showcase-checkpoint-*` entries is **expected state**. Do not flag
+it as a gap. (Contrast with `openclaw-vm`, which *does* keep daily checkpoints — it holds state
+that isn't reproducible from a repo.)
+
+`deploy/com.foscs.tart-fos-showcase-checkpoint.plist` remains in the repo as an unused option. If
+you ever decide this VM does warrant checkpoints, install it on the host with `launchctl load`
+after `plutil -lint`; it calls `~/.foscs/scripts/tart-daily-checkpoint.sh fos-showcase` at 02:30
+(offset from `openclaw-vm`'s 02:00 to avoid I/O collision) and honours `RETENTION_COUNT=7`.
+
+### What DOES need to survive a reboot
+
+Two host-side LaunchAgents matter: `deploy/com.foscs.tart-fos-showcase.plist` (`KeepAlive` + `RunAtLoad`), which restarts the VM itself, and `deploy/com.foscs.postgres-stale-lock.plist` (Section 3e), which lets Homebrew postgres recover from an unclean shutdown. Confirm both are loaded:
 
 ```bash
-# On fos-openclaw (the Tart host):
-
-# 1. Copy to LaunchAgents:
-cp /path/to/FOSShowcase/deploy/com.foscs.tart-fos-showcase-checkpoint.plist \
-   ~/Library/LaunchAgents/
-
-# 2. Validate the plist:
-plutil -lint ~/Library/LaunchAgents/com.foscs.tart-fos-showcase-checkpoint.plist
-# Expected: OK
-
-# 3. Load:
-launchctl load ~/Library/LaunchAgents/com.foscs.tart-fos-showcase-checkpoint.plist
-
-# 4. Confirm it loaded (will NOT run immediately; StartCalendarInterval fires at 02:30):
-launchctl list | grep fos-showcase-checkpoint
-
-# 5. Manual test run (optional but recommended — confirms the script works before the first
-#    scheduled run):
-/Users/david/.foscs/scripts/tart-daily-checkpoint.sh fos-showcase
-
-# After the script completes, verify a checkpoint clone exists:
-tart list | grep fos-showcase-checkpoint
-# Expected: one entry like fos-showcase-checkpoint-20260622 (or similar date stamp)
+# On fos-openclaw:
+launchctl list | grep -E "com.foscs.tart-fos-showcase|com.foscs.postgres-stale-lock"
+tart list | grep fos-showcase    # State should be "running"
+lsof -nP -iTCP:5432 -sTCP:LISTEN # postgres must be listening
 ```
 
-**Retention:** the checkpoint script honours the `RETENTION_COUNT` environment variable (set to `7`
-in the plist); it prunes checkpoints older than 7 days automatically.
+Inside the VM, all three Compose services declare `restart: unless-stopped`, so Docker brings the
+stack back after a VM reboot or docker-daemon restart.
+
+> **Regression note (2026-07-25 → 2026-08-05, ~10.7 days of downtime):** `client` and `server`
+> originally had **no** restart policy — only `nginx` did. A host reboot left both app containers
+> `Exited (255)` permanently, while nginx crash-looped 15,418 times on
+> `host not found in upstream "server"`, so nothing bound :443. Fixed by adding
+> `restart: unless-stopped` to both services in `docker-compose.yml`. If you ever see this shape
+> again, note that nginx's exponential backoff will have maxed out and it will **not** pick up
+> revived upstreams on its own:
+>
+> ```bash
+> ssh -J david@10.1.2.158 admin@10.1.3.10 \
+>   'cd /opt/fosshowcase && docker compose up -d && docker compose restart nginx'
+> ```
 
 ---
 
