@@ -10,7 +10,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest] #, windows-latest]
+        # Ubuntu is pinned: ubuntu-latest moved to 26.04, whose libxml2 has a
+        # new soname, and the Swift 6.2.3 toolchain (built for 24.04) needs
+        # libxml2.so.2. Unpin once a Swift toolchain for 26.04 is in use.
+        os: [macos-latest, ubuntu-24.04] #, windows-latest]
         swift: ["6.2.3"]
       fail-fast: false
     steps:
